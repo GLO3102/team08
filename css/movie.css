@@ -1,0 +1,16 @@
+.preview-panel {
+    display: block;
+    height: 400px;
+}
+
+.movieCover {
+    max-width: 100%;
+}
+
+.itunesLogo {
+    height: 40px;
+}
+
+.itunesLogoContainer {
+    float: right;
+}

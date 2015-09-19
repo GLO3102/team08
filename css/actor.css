@@ -1,0 +1,26 @@
+.preview-panel {
+    display: block;
+    height: 400px;
+}
+
+.FilmographySnippet {
+    display: inline-block;
+    margin: auto;
+    width: 50%;
+}
+
+#previewFrame {
+    display: none;
+}
+
+.photoActor {
+    max-width: 100%;
+}
+
+.itunesLogo {
+    height: 40px;
+}
+
+.itunesLogoContainer {
+    float: right;
+}
