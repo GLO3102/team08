@@ -1,0 +1,217 @@
+.preview-panel {
+    display:inline-block;
+    position:relative;
+    height: 400px;
+    text-align: center;
+}
+
+.showTVCover {
+    max-width: 100%;
+}
+
+.itunesLogo {
+    height: 40px;
+}
+
+.itunesLogoContainer {
+    float: right;
+}
+
+.blogvision iframe{
+    display:inline-block;
+    width:640px; height:360px;
+}
+
+.container_preview{
+    display:inline-block;
+    width:100%;
+    position:relative;
+    text-align:center;
+}
+
+.showTv_list{
+
+    position:absolute;
+    float:left;
+    width:220px;
+    height: 360px;
+
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+.showTv_list::-webkit-scrollbar {
+    display: none;
+}
+
+.showTv_list iframe{
+    width:240px;
+    border:0;
+    height: 360px;
+}
+
+.showTv_otherSeason{
+    display:inline-block;
+    position:absolute;
+    width:150px;
+    height: 200px;
+    float: right;
+
+}
+
+.showTv_otherSeason ul {
+    list-style: none;
+    text-align:left;
+    width:200px;
+    margin-right:15px;
+}
+
+.showTv_otherSeason li {
+    font-size:0.9em;
+    width:150px;
+    height: 25px;
+    margin-bottom:10px;
+}
+
+.showTv_otherSeason li a {
+    color:black;
+
+}
+
+.showTv_otherSeason li:hover{
+    background-color: #e8e8e8;
+}
+
+.showTv_otherSeason ul li#active > a,
+.showTv_otherSeason li.active > a:hover,
+.showTv_otherSeason li.active > a:focus,
+.showTv_otherSeason li > a:hover{
+    color: #555;
+    border-bottom-color: transparent;
+    text-decoration: underline;
+}
+
+.panel-body{
+    text-align:justify;
+}
+
+
+@media all and (max-width:500px)  {
+
+    .page-header{
+        font-size:20px;
+    }
+
+    .itunesLogo {
+        height: 35px;
+    }
+
+
+
+    .container_preview{
+        display:inline-block;
+        position:relative;
+        width:100%;
+        height:370px;
+        text-align:center;
+    }
+
+    .preview-panel{
+        height:220px;
+    }
+
+    .blogvision iframe{
+        margin-top:15px;
+        display:block;
+        width:95%; height:75%;
+        font-size:0.9em;
+
+    }
+
+    .showTv_otherSeason{
+        position:relative;
+        width:100%;
+        height:50px;
+        margin-top:3px;
+    }
+
+    .showTv_otherSeason ul {
+        list-style-type:none;
+        margin:0;
+        width:100%;
+    }
+
+    .showTv_otherSeason li  {
+        float:left;
+        font-size:0.8em;
+        margin-right:5px;
+        margin-bottom:8px;
+        width:55px;
+        height: 18px;
+    }
+
+    .showTv_otherSeason li:hover{
+    background-color: #e8e8e8;
+    }
+
+
+    .showTv_otherSeason li a{
+        text-decoration: none;
+    }
+
+    .panel.panel-default {
+        text-align:center;
+
+    }
+
+    .showTv_list{
+        float: left;
+        display:block;
+        position:relative;
+        width:100%;
+        height: 60px;
+        margin-bottom:5px;
+        overflow:hidden;
+    }
+
+    .showTv_list iframe{
+        display:block;
+        width:100%;
+        border:0;
+        height: 60px;
+        margin-bottom:3px;
+        overflow-x: auto;
+        overflow-y : hidden;
+
+    }
+
+
+
+    .showTv_list iframe::-webkit-scrollbar
+    {
+        width: 10px;
+        background-color: #F5F5F5;
+    }
+
+    .showTv_list iframe::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+
+    .list-group{
+        font-size:0.8em;
+    }
+
+    .list-group-item span{
+        font-size:0.8em;
+    }
+
+    .panel-body{
+        font-size:0.8em;
+    }
+
+
+
+}
