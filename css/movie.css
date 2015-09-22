@@ -1,6 +1,20 @@
 .preview-panel {
-    display: block;
+    display:inline-block;
+    position:relative;
     height: 400px;
+    text-align: center;
+}
+
+.blogvision iframe{
+    display:inline-block;
+    width:640px; height:360px;
+}
+
+.container_preview{
+    display:inline-block;
+    width:100%;
+    position:relative;
+    text-align:center;
 }
 
 .movieCover {
