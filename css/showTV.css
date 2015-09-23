@@ -1,0 +1,308 @@
+.preview-panel {
+    display:inline-block;
+    width: 50%;
+    height: 400px;
+    text-align: center;
+}
+
+.container-FilmographySnippet{
+    float:left;
+    vertical-align: top;
+    width:100%;
+    height:450px;
+    margin-left:1em;
+}
+
+.container-FilmographySnippet:after{
+    clear: left;
+}
+
+
+.FilmographySnippet{
+    width: auto;
+
+}
+
+.FilmographySnippet img{
+    width:100%;
+}
+
+#previewFrame {
+    display: none;
+}
+
+
+.showTVCover, .movieCover , .photoActor{
+    max-width: 100%;
+}
+
+.itunesLogo {
+    height: 40px;
+}
+
+.itunesLogoContainer {
+    float: right;
+}
+
+.itunesLogoContainer:after{
+    clear:both;
+}
+
+.blogvision, .blogvision iframe, .container_preview{
+    display:inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.container_preview{
+
+    text-align:center;
+}
+
+#player_visu{
+    width:100%;
+}
+.showTv_list{
+    max-width:25%;
+    float:left;
+}
+
+.preview-panel{
+    max-width:60%;
+}
+.showTv_otherSeason{
+    max-width:15%;
+    float:right;
+}
+
+.showTv_list_ul ul, .showTv_otherSeason ul{
+    list-style: none;
+    width:200px;
+    text-align:left;
+    padding:0;
+}
+
+.showTv_list_ul li, .showTv_otherSeason li{
+    width:100%;
+    height:25px;
+    margin:0;
+}
+
+.showTv_list_ul a, .showTv_otherSeason a{
+    text-decoration: none;
+    color:black;
+
+}
+
+.showTv_list_ul a{
+    font-size:13px;
+}
+
+.showTv_list iframe{
+    width:100%;
+    border:0;
+    height: 360px;
+    overflow:hidden;
+}
+
+.showTv_list::-webkit-scrollbar, .showTv_list iframe::-webkit-scrollbar {
+    display: none;
+}
+
+.showTv_otherSeason li:hover, .showTv_list_ul li:hover{
+    background-color: #e8e8e8;
+}
+
+.showTv_otherSeason ul li#active > a,.showTv_list_ul ul li#active > a,
+.showTv_otherSeason li.active > a:hover,.showTv_list_ul li.active > a:hover,
+.showTv_otherSeason li.active > a:focus, .showTv_list_ul li.active > a:focus,
+.showTv_otherSeason li > a:hover, .showTv_list_ul li > a:hover{
+    color: #555;
+    border-bottom-color: transparent;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+@media all and (max-width:1200px) {
+
+    .preview-panel{
+        clear:left;
+        display:inline-block;
+        position:relative;
+        width: 80%;
+        height: 360px;
+        text-align: center;
+    }
+
+    .container_preview{
+        width:100%;
+    }
+
+    .container-FilmographySnippet{
+
+        float:left;
+        vertical-align: top;
+        width:25%;
+        height:350px;
+        margin-left:1em;
+    }
+
+
+
+
+    .FilmographySnippet{
+        width: auto;
+
+    }
+
+    .FilmographySnippet img{
+        width:100%;
+    }
+
+   #container-actor-img  {
+       width: 100%;
+       text-align:center;
+
+    }
+
+    .photoActor {
+        position: center;
+        width:50%;
+    }
+
+    .showTv_otherSeason ul{
+        padding:0;
+        margin-left:-50px;
+    }
+
+    .showTv_otherSeason a{
+        font-size:1.0em;
+    }
+
+    .showTv_otherSeason{
+        width:10%;
+    }
+
+    .showTv_list_ul a{
+        font-size:0.8em;
+    }
+
+    .showTv_list {
+        position:relative;
+        margin:auto;
+        min-width:100%;
+        height:80px;
+        margin-bottom:20px;
+    }
+    .showTv_list iframe{
+        width:100%;
+        height:80px;
+    }
+
+    .showTv_list_ul, .showTv_list_ul ul{
+        position:relative;
+        width:100%;
+        height:80px;
+    }
+
+    .showTv_list_ul li{
+        display: inline-block;
+        width:120px;
+        margin-right:5px;
+    }
+}
+
+@media all and (max-width:768px) {
+    .preview-panel {
+        display:inline-block;
+        position:relative;
+        width: 55%;
+        height: 260px;
+        text-align: left;
+    }
+
+    .showTv_otherSeason a{
+        font-size:0.8em;
+    }
+
+
+
+
+}
+
+
+
+@media all and (max-width:500px)  {
+
+    .preview-panel {
+        clear:right;
+        display:inline-block;
+        position:relative;
+        width: 100%;
+        height: 281px;
+        text-align: center;
+    }
+
+
+    .FilmographySnippet{
+        font-size: 0.9em;
+    }
+    .container-FilmographySnippet:before{
+        clear:both;
+    }
+
+    .container-FilmographySnippet{
+    display:inline-block;
+        margin:auto;
+        width:50%;
+        height:250px;
+    }
+
+
+    .FilmographySnippet{
+        width: 70%;
+
+    }
+
+    .FilmographySnippet img{
+        width:100%;
+    }
+
+
+    .showTv_otherSeason {
+        position:relative;
+        margin:auto;
+        min-width:100%;
+        height:80px;
+        margin-bottom:20px;
+
+    }
+
+
+    .showTv_otherSeason ul{
+        position:relative;
+        width:100%;
+        height:80px;
+        margin-left:0;
+    }
+
+    .showTv_otherSeason li{
+        display: inline-block;
+        width:80px;
+        margin-right:5px;
+    }
+
+    .showTv_otherSeason a, .showTv_list_ul a{
+        font-size:0.7em;
+    }
+
+
+
+}

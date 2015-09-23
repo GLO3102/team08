@@ -13,8 +13,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-    <link href="css/actor.css" rel="stylesheet">
+    <link href="css/core.css" rel="stylesheet">
+    <link href="css/showTV.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -96,7 +96,10 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="panel panel-default">
-                        <img class="photoActor" src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
+                        <div id = "container-actor-img">
+                            <img class="photoActor" src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -128,28 +131,38 @@
                             <h3 class="panel-title">Filmography</h3>
                         </div>
                         <div class="panel-body">
-                            <div class="col-lg-2">
-                                <img class="FilmographySnippet" src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
-                                <div>
-                                    Martine à la campagne
-                                </div>
-                                <div>
-                                    34 May, 9912
-                                </div>
-                                <button onclick="ShowPreview()" type="PreviewButton">Preview</button>
-                            </div>
-                            <div class="col-lg-2">
-                                <img class="FilmographySnippet" src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
-                                <div>
-                                    Danny and the magic bullet
-                                </div>
+                           <div class="col-lg-2">
+                            <div class = "container-FilmographySnippet">
+                                <div class=" FilmographySnippet">
+                                    <img  src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
+                                    <div>
+                                        Martine à la campagne
+                                    </div>
                                 <div>
                                     34 May, 9912
                                 </div>
                                 <button onclick="ShowPreview()" type="PreviewButton">Preview</button>
                             </div>
+                               </div>
+                        </div>
                             <div class="col-lg-2">
-                                <img class="FilmographySnippet" src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
+                                <div class = "container-FilmographySnippet">
+                                    <div class="FilmographySnippet">
+                                    <img  src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
+                                    <div>
+                                      Danny and the magic bullet
+                                    </div>
+                                     <div>
+                                          34 May, 9912
+                                     </div>
+                                <button onclick="ShowPreview()" type="PreviewButton">Preview</button>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class = "container-FilmographySnippet">
+                                    <div class="FilmographySnippet">
+                                <img  src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
                                 <div>
                                     Danny goes to church
                                 </div>
@@ -157,6 +170,8 @@
                                     July, 2016
                                 </div>
                                 <button onclick="ShowPreview()" type="PreviewButton">Preview</button>
+                            </div>
+                                </div>
                             </div>
                         </div>
                     </div>
