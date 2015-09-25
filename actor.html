@@ -13,8 +13,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-    <link href="css/actor.css" rel="stylesheet">
+    <link href="css/core.css" rel="stylesheet">
+    <link href="css/showTV.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -96,7 +96,10 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="panel panel-default">
-                        <img class="photoActor" src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
+                        <div id = "container-actor-img">
+                            <img class="photoActor" src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -116,8 +119,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body container_preview">
                                 <div class="preview-panel">
-                                    <div class="blogvision"><iframe id="preview-frame" src="http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19547797" ></iframe><br /><a href="http://www.allocine.fr/film/fichefilm_gen_cfilm=222388.html" target="_blank">Bad Ass 2: Bad Asses</a><br/><a href="http://www.allocine.fr/video/player_gen_cmedia=19547797&cfilm=222388.html" >Bad Ass 2 - EXTRAIT VF ''L'entrainement de boxe''</a></div>
-                                </div>
+                                    <div id='blogvision'><iframe src='http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19554604'></iframe><br /><a href='http://www.allocine.fr/film/fichefilm_gen_cfilm=238324.html' target='_blank'>3-Headed Shark Attack</a></div>                                </div>
                             </div>
                         </div>
                     </div>
@@ -128,35 +130,47 @@
                             <h3 class="panel-title">Filmography</h3>
                         </div>
                         <div class="panel-body">
-                            <div class="col-lg-2">
-                                <img class="FilmographySnippet" src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
+                           <div class="col-lg-2">
+                            <div class = "container-FilmographySnippet">
+                                <div class=" FilmographySnippet">
+                                    <img  src="http://www.schnittberichte.com/news/pics2/3headed.jpg"/>
+                                    <div>
+                                        3-Headed Shark Attack
+                                    </div>
                                 <div>
-                                    Martine à la campagne
-                                </div>
-                                <div>
-                                    34 May, 9912
-                                </div>
-                                <button onclick="ShowPreview()" type="PreviewButton">Preview</button>
-                            </div>
-                            <div class="col-lg-2">
-                                <img class="FilmographySnippet" src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
-                                <div>
-                                    Danny and the magic bullet
-                                </div>
-                                <div>
-                                    34 May, 9912
+                                    2015
                                 </div>
                                 <button onclick="ShowPreview()" type="PreviewButton">Preview</button>
                             </div>
+                               </div>
+                        </div>
                             <div class="col-lg-2">
-                                <img class="FilmographySnippet" src="http://www.incine.fr/media/photos_persos/big/danny-trejo-1373965562.jpg"/>
+                                <div class = "container-FilmographySnippet">
+                                    <div class="FilmographySnippet">
+                                    <img  src="http://fr.web.img3.acsta.net/r_160_240/b_1_d6d6d6/pictures/15/05/23/17/16/365589.jpg"/>
+                                    <div>
+                                        Blackwater
+                                    </div>
+                                     <div>
+                                         2015
+                                     </div>
+                                <button onclick="ShowPreview()" type="PreviewButton">Preview</button>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class = "container-FilmographySnippet">
+                                    <div class="FilmographySnippet">
+                                <img  src="http://fr.web.img2.acsta.net/r_160_240/b_1_d6d6d6/pictures/14/04/29/17/47/095832.jpg"/>
                                 <div>
-                                    Danny goes to church
+                                    Bad Ass 2: Bad Asses
                                 </div>
                                 <div>
-                                    July, 2016
+                                    2014
                                 </div>
                                 <button onclick="ShowPreview()" type="PreviewButton">Preview</button>
+                            </div>
+                                </div>
                             </div>
                         </div>
                     </div>
