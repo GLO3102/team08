@@ -13,14 +13,6 @@
     max-width: 100%;
 }
 
-.itunesLogo {
-    height: 40px;
-}
-
-.itunesLogoContainer {
-    float: right;
-}
-
 .preview-panel {
     display:inline-block;
     position:relative;
@@ -60,7 +52,6 @@
 }
 
 @media all and (max-width:1200px) {
-
     .preview-panel {
         display:inline-block;
         position:relative;
@@ -68,11 +59,9 @@
         height: 360px;
         text-align: center;
     }
-
 }
 
 @media all and (max-width:500px) {
-
     .preview-panel {
         display:inline-block;
         position:relative;
@@ -80,5 +69,4 @@
         height: 281px;
         text-align: center;
     }
-
 }

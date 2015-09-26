@@ -1,6 +1,5 @@
 
 body {
-
     margin-top: 100px;
     background-color: #222;
 }
@@ -9,6 +8,14 @@ body {
     body {
         margin-top: 50px;
     }
+}
+
+.itunesLogo {
+    height: 40px;
+}
+
+.itunesLogoContainer {
+    float: right;
 }
 
 #wrapper {
@@ -55,7 +62,6 @@ body {
         background-color: #000 !important;
     }
 }
-
 
 .top-nav {
     padding: 0 15px;
@@ -109,9 +115,6 @@ li.message-preview {
     width: 275px;
     border-bottom: 1px solid rgba(0,0,0,.15);
 }
-
-
-
 
 .side-nav>li>ul {
     padding: 0;
