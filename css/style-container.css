@@ -43,8 +43,8 @@
 }
 
 .container_preview{
-
     text-align:center;
+    overflow:hidden;
 }
 
 #player_visu{
@@ -61,6 +61,8 @@
 .showTv_otherSeason{
     max-width:15%;
     float:right;
+
+
 }
 
 .showTv_list_ul ul, .showTv_otherSeason ul{
@@ -68,17 +70,21 @@
     width:200px;
     text-align:left;
     padding:0;
+
+
 }
 
 .showTv_list_ul li, .showTv_otherSeason li{
     width:100%;
     height:25px;
     margin:0;
+
 }
 
 .showTv_list_ul a, .showTv_otherSeason a{
     text-decoration: none;
     color:black;
+
 
 }
 
@@ -153,6 +159,7 @@
     .showTv_otherSeason ul{
         padding:0;
         margin-left:-50px;
+
     }
 
     .showTv_otherSeason a{
