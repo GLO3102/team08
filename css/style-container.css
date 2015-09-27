@@ -9,7 +9,6 @@
     float:left;
     vertical-align: top;
     width:100%;
-    height:450px;
     margin-left:1em;
 }
 
@@ -17,10 +16,8 @@
     clear: left;
 }
 
-
 .FilmographySnippet{
     width: auto;
-
 }
 
 .FilmographySnippet img{
@@ -31,17 +28,8 @@
     display: none;
 }
 
-
 .showTVCover, .movieCover , .photoActor{
     max-width: 100%;
-}
-
-.itunesLogo {
-    height: 40px;
-}
-
-.itunesLogoContainer {
-    float: right;
 }
 
 .itunesLogoContainer:after{
@@ -54,11 +42,9 @@
     height: 100%;
 }
 
-
-
 .container_preview{
-
     text-align:center;
+    overflow:hidden;
 }
 
 #player_visu{
@@ -75,6 +61,8 @@
 .showTv_otherSeason{
     max-width:15%;
     float:right;
+
+
 }
 
 .showTv_list_ul ul, .showTv_otherSeason ul{
@@ -82,17 +70,21 @@
     width:200px;
     text-align:left;
     padding:0;
+
+
 }
 
 .showTv_list_ul li, .showTv_otherSeason li{
     width:100%;
     height:25px;
     margin:0;
+
 }
 
 .showTv_list_ul a, .showTv_otherSeason a{
     text-decoration: none;
     color:black;
+
 
 }
 
@@ -124,14 +116,7 @@
     text-decoration: underline;
 }
 
-
-
-
-
-
-
 @media all and (max-width:1200px) {
-
     .preview-panel{
         clear:left;
         display:inline-block;
@@ -146,20 +131,14 @@
     }
 
     .container-FilmographySnippet{
-
         float:left;
         vertical-align: top;
         width:25%;
-        height:350px;
         margin-left:1em;
     }
 
-
-
-
     .FilmographySnippet{
         width: auto;
-
     }
 
     .FilmographySnippet img{
@@ -180,6 +159,7 @@
     .showTv_otherSeason ul{
         padding:0;
         margin-left:-50px;
+
     }
 
     .showTv_otherSeason a{
@@ -231,16 +211,9 @@
     .showTv_otherSeason a{
         font-size:0.8em;
     }
-
-
-
-
 }
 
-
-
 @media all and (max-width:500px)  {
-
     .preview-panel {
         clear:right;
         display:inline-block;
@@ -250,7 +223,6 @@
         text-align: center;
     }
 
-
     .FilmographySnippet{
         font-size: 0.9em;
     }
@@ -259,22 +231,19 @@
     }
 
     .container-FilmographySnippet{
-    display:inline-block;
+        display:inline-block;
         margin:auto;
         width:50%;
         height:250px;
     }
 
-
     .FilmographySnippet{
         width: 70%;
-
     }
 
     .FilmographySnippet img{
         width:100%;
     }
-
 
     .showTv_otherSeason {
         position:relative;
@@ -282,9 +251,7 @@
         min-width:100%;
         height:80px;
         margin-bottom:20px;
-
     }
-
 
     .showTv_otherSeason ul{
         position:relative;
@@ -302,7 +269,4 @@
     .showTv_otherSeason a, .showTv_list_ul a{
         font-size:0.7em;
     }
-
-
-
 }
