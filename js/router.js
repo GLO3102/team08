@@ -3,8 +3,8 @@ define([
     'underscore',
     'backbone',
     'views/menu',
-    'models/menuModel'
-], function($, _, Backbone, MenuView){
+    'views/watchlists'
+], function($, _, Backbone, MenuView, WatchlistView){
     var AppRouter = Backbone.Router.extend({
         routes: {
             // Default
@@ -18,6 +18,9 @@ define([
         app_router.on('route:defaultAction', function (actions) {
             var menuView = new MenuView();
             menuView.render();
+
+            var watchlistView = new WatchlistView();
+            watchlistView.render();
         });
 
         Backbone.history.start();
