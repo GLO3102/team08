@@ -18,7 +18,7 @@ define([
     var initialize = function(){
         var app_router = new AppRouter;
 
-        app_router.on('route:defaultAction', function (actions) {console.log("action");
+        app_router.on('route:defaultAction', function (actions) {
 
             var menuView = new MenuView();
             menuView.render();
@@ -27,12 +27,11 @@ define([
             watchlistView.render();
         });
 
-        app_router.on('route:searchActor', function () {console.log("action");
+        app_router.on('route:searchActor', function () {
             var menuView = new MenuView();
             menuView.render();
 
-            var actorView = new ActorView();
-            actorView.render();
+            new ActorView();
         });
 
         Backbone.history.start();
