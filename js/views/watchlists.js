@@ -26,7 +26,8 @@ define([
         },
 
         events: {
-            'click #AddWatchlistButton' : 'addWatchList'
+            'click #AddWatchlistButton' : 'addWatchList',
+            'click .RemoveWatchListButton' : 'removeWatchList'
         },
 
         addWatchList: function () {
@@ -40,6 +41,21 @@ define([
                     watchlistModel.save();
                     this.display();
                 }
+            }
+        },
+
+        removeWatchList: function (ev) {
+            var watchListId = $(ev.currentTarget).data('id');
+
+            var _this = this;
+            if (watchListId !== undefined) {
+                var watchlistModel = new WatchlistModel({ id: watchListId});
+                var options = {
+                    success: function(model, response) {
+                        _this.display();
+                    }
+                };
+                watchlistModel.destroy(options);
             }
         }
     });
