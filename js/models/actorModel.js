@@ -6,9 +6,13 @@ define([
     'backbone'
 ], function(_, Backbone){
     var ActorModel = Backbone.Model.extend({
+        initialize:function(request){
+          this.request = request;
+        },
         sync:function(method, collection, options){
+            var self = this;
             var params = _.extend({
-                url: "http://"+urlServer+":3000/unsecure/search/actors?q=DannyTrejo",
+                url: "http://"+urlServer+":3000/unsecure/search/actors?q="+self.request,
                 dataType: "json",
                 contentType: "application/x-www-form-urlencoded"
             }, options);

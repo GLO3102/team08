@@ -6,9 +6,13 @@ define([
     'backbone'
 ], function(_, Backbone){
     var ActorImageModel = Backbone.Model.extend({
+        initialize:function(request){
+          this.request = request;
+        },
         sync:function(method, collection, options){
+            var self = this;
             var params = _.extend({
-                url: "http://www.myapifilms.com/imdb?name=Danny Trejo&format=JSONP&actorPhotos=N",
+                url: "http://www.myapifilms.com/imdb?name="+self.request+"&format=JSONP&actorPhotos=N",
                 dataType: "jsonp"
             }, options);
 

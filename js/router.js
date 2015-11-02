@@ -4,8 +4,8 @@ define([
     'backbone',
     'views/menu',
     'views/watchlists',
-    'views/actor'
-], function($, _, Backbone, MenuView, WatchlistView,ActorView){
+    'views/actorMain'
+], function($, _, Backbone, MenuView, WatchlistView,ActorMainView){
     var AppRouter = Backbone.Router.extend({
         routes: {
             // Default
@@ -30,7 +30,8 @@ define([
             var menuView = new MenuView();
             menuView.render();
 
-            new ActorView();
+            var actorMainView = new ActorMainView();
+            actorMainView.render("Brad Pitt");
         });
 
         Backbone.history.start();
