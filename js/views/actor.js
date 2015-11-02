@@ -23,6 +23,7 @@ define([
                 self.modelActorImage.fetch().complete(function(){
                     self.modelActor = _.extend(self.modelActor.toJSON(),{img:self.modelActorImage.toJSON().urlPhoto,bio:self.modelActorImage.toJSON().bio});
                     var compiledTemplate = _.template(ActorTemplate);
+                    console.log(self.modelActor);
                     self.$el.html( compiledTemplate({actor:self.modelActor}) );
                 });
 
