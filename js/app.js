@@ -1,3 +1,5 @@
+urlServer = "localhost";
+
 define([
     'jquery',
     'underscore',

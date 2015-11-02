@@ -9,7 +9,7 @@ define([
             movies: []
         },
         idAttribute: "id",
-        urlRoot: 'http://localhost:3000/unsecure/watchlists',
+        urlRoot: 'http://'+urlServer+':3000/unsecure/watchlists',
 
         save: function() {
             $.post(this.urlRoot, this.toJSON())

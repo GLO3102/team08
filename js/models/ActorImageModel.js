@@ -15,7 +15,6 @@ define([
             return $.ajax(params);
         },
         parse: function(response){
-            console.log("response",response[0]);
             return response[0];
         }
     });

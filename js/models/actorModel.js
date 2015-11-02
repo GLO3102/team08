@@ -8,7 +8,7 @@ define([
     var ActorModel = Backbone.Model.extend({
         sync:function(method, collection, options){
             var params = _.extend({
-                url: "http://192.168.0.103:3000/unsecure/search/actors?q=DannyTrejo",
+                url: "http://"+urlServer+":3000/unsecure/search/actors?q=DannyTrejo",
                 dataType: "json",
                 contentType: "application/x-www-form-urlencoded"
             }, options);
@@ -18,7 +18,6 @@ define([
 
         },
         parse: function(response){
-            console.log("response",response.results[0]);
             return response.results[0];
         }
     });
