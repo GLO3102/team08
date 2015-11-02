@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e56dead5-aebd-46fc-b512-3ab5537ad4d5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/models/watchlistModel.js" afterPath="$PROJECT_DIR$/js/models/watchlistModel.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Templates/watchlists.html" afterPath="$PROJECT_DIR$/Templates/watchlists.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/watchlists.js" afterPath="$PROJECT_DIR$/js/views/watchlists.js" />
     </list>
@@ -27,7 +28,7 @@
       <file leaf-file-name="blank-page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blank-page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-7.1538463">
               <caret line="102" column="25" selection-start-line="99" selection-start-column="20" selection-end-line="102" selection-end-column="25" />
               <folding />
             </state>
@@ -68,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/js/models/watchlistModel.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+              <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -87,7 +88,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.230769">
+            <state vertical-scroll-proportion="-7.1923075">
               <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
               <folding />
             </state>
@@ -97,8 +98,8 @@
       <file leaf-file-name="watchlists.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Templates/watchlists.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846">
-              <caret line="17" column="64" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="64" />
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="16" column="55" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -107,8 +108,8 @@
       <file leaf-file-name="watchlists.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/views/watchlists.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5957194">
-              <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.69678956">
+              <caret line="79" column="35" selection-start-line="79" selection-start-column="35" selection-end-line="79" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -185,6 +186,7 @@
         <option value="$PROJECT_DIR$/js/models/watchlistCollection.js" />
         <option value="$PROJECT_DIR$/templates/watchlists.html" />
         <option value="$PROJECT_DIR$/Templates/watchlists.html" />
+        <option value="$PROJECT_DIR$/js/models/watchlistModel.js" />
         <option value="$PROJECT_DIR$/js/views/watchlists.js" />
       </list>
     </option>
@@ -729,6 +731,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -779,6 +782,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -800,14 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05928854">
           <caret line="10" column="69" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blank-page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="102" column="25" selection-start-line="99" selection-start-column="20" selection-end-line="102" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -835,14 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/models/watchlistModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/models/watchlistsCollection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -853,7 +843,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.230769">
+        <state vertical-scroll-proportion="-7.1923075">
           <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
           <folding />
         </state>
@@ -861,16 +851,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Templates/watchlists.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846">
-          <caret line="17" column="64" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="64" />
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="16" column="55" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blank-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1538463">
+          <caret line="102" column="25" selection-start-line="99" selection-start-column="20" selection-end-line="102" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/models/watchlistModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/views/watchlists.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5957194">
-          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.69678956">
+          <caret line="79" column="35" selection-start-line="79" selection-start-column="35" selection-end-line="79" selection-end-column="35" />
           <folding />
         </state>
       </provider>

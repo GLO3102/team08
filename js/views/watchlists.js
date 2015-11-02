@@ -27,7 +27,12 @@ define([
 
         events: {
             'click #AddWatchlistButton' : 'addWatchList',
-            'click .RemoveWatchListButton' : 'removeWatchList'
+            'click .RemoveWatchListButton' : 'removeWatchList',
+            'click .ModifyWatchListButton' : 'modifyWatchList'
+        },
+
+        isValidName : function(name) {
+            return true;
         },
 
         addWatchList: function () {
@@ -56,6 +61,32 @@ define([
                     }
                 };
                 watchlistModel.destroy(options);
+            }
+        },
+
+        modifyWatchList: function (ev) {
+            var watchListId = $(ev.currentTarget).data('id');
+
+            var modelToUpdate = this.collection.get(watchListId);
+            var newName = $(ev.currentTarget).prevAll(".watchListName")[0].value;
+
+            var _this = this;
+            if (watchListId !== undefined &&
+                modelToUpdate !== undefined &&
+                this.isValidName(newName)) {
+
+                var data = {
+                    "name": newName,
+                    id: watchListId,
+                    "movies": []
+                };
+
+                var options = {
+                    success: function(model, response) {
+                        _this.display();
+                    }
+                };
+                modelToUpdate.update(data, options);
             }
         }
     });
