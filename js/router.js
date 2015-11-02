@@ -24,7 +24,6 @@ define([
             menuView.render();
 
             var watchlistView = new WatchlistView();
-            watchlistView.render();
         });
 
         app_router.on('route:searchActor', function () {
