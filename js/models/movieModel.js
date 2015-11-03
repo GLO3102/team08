@@ -6,9 +6,12 @@ define([
     'backbone'
 ], function(_, Backbone){
     var MovieModel = Backbone.Model.extend({
+        initialize:function(request){
+          this.request = request;
+        },
         sync:function(method, collection, options){
             var params = _.extend({
-                url: "http://"+urlServer+":3000/unsecure/search/movies?q=saw",
+                url: "http://"+urlServer+":3000/unsecure/search/movies?q="+this.request,
                 dataType: "json",
                 contentType: "application/x-www-form-urlencoded"
             }, options);

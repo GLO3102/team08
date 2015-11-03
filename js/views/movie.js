@@ -11,12 +11,12 @@ define([
     var MovieView = Backbone.View.extend({
         el: $('#Page_Container'),
         initialize: function() {
-            this.render();
         },
 
-        render: function() {
+        render: function(request) {
             var self = this;
-            this.modelMovie = new MovieModel();
+            console.log("request in movie",request);
+            this.modelMovie = new MovieModel(request);
 
             this.modelMovie.fetch().complete(function(){
                 self.modelMovie = _.extend(self.modelMovie.toJSON());

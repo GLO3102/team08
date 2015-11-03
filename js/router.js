@@ -12,6 +12,7 @@ define([
             // Default
             'actor/' : 'searchActor',
             'movie/' : 'searchMovie',
+            'movie/:name' : 'searchMovieName',
             '*actions': 'defaultAction'
 
         }
@@ -40,8 +41,18 @@ define([
             var menuView = new MenuView();
             menuView.render();
 
-            new MovieView();
+            var movieView = new MovieView();
+            movieView.render('saw');
             
+        });
+
+        app_router.on('route:searchMovieName', function(name){
+            var menuView = new MenuView();
+            menuView.render();
+
+            var movieView = new MovieView();
+            movieView.render(name);
+
         });
 
         Backbone.history.start();
