@@ -21,7 +21,7 @@
 }
 
 .FilmographySnippet img{
-    width:100px;
+    width:100%;
 }
 
 #previewFrame {
@@ -120,6 +120,10 @@
     color: #555;
     border-bottom-color: transparent;
     text-decoration: underline;
+}
+
+.bio{
+    text-align: justify;
 }
 
 @media all and (max-width:1200px) {

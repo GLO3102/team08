@@ -5,10 +5,10 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'models/actorMainModel',
-    'views/actor',
-    'views/actorMovies',
-    'text!../../templates/actor.html'
+    'models/actorModels/actorMainModel',
+    'views/actorViews/actor',
+    'views/actorViews/actorMovies',
+    'text!../../../templates/actor.html'
 ],function($,_,Backbone,ActorMainModel, Actor,ActorMovies,ActorTemplate){
     var ActorMain = Backbone.View.extend({
         el: $('#Page_Container'),
@@ -28,7 +28,6 @@ define([
         },
         compileTemplate:function(self){
             var compiledTemplate = _.template(ActorTemplate);
-            console.log(self.model);
             self.$el.html( compiledTemplate(self.model) );
         }
     });

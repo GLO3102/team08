@@ -11,11 +11,12 @@ define([
         render: function(parent,request,callback) {
             var self = this;
             this.collection = new ActorMoviesCollection(request);
-            this.collection.fetch({success : function(){
-                console.log("collection",self.collection.toJSON());
+            this.collection.fetch(
+                {success : function(){
                 parent.model.movies = self.collection.toJSON();
                 callback(parent);
-            }});
+                }
+            });
 
 
         }

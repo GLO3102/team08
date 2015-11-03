@@ -4,7 +4,7 @@
 define([
     'underscore',
     'backbone',
-    'models/actorMoviesModel'
+    '../models/actorModels/actorMoviesModel'
 ], function(_, Backbone, ActorMoviesModel){
     var ActorMoviesCollection = Backbone.Collection.extend({
         model: ActorMoviesModel,
@@ -12,9 +12,6 @@ define([
             this.request = request;
         },
         sync:function(method, collection, options){
-            console.log(method);
-            console.log(collection);
-            console.log(options);
             var self = this;
             var params = _.extend({
                 url: 'http://'+urlServer+':3000/unsecure/actors/'+self.request+'/movies',
