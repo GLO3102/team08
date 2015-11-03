@@ -28,6 +28,10 @@ body {
     background-color: #fff;
 }
 
+.clearleft{
+    clear: left;
+}
+
 @media(min-width:768px) {
 
     #wrapper {

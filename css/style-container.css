@@ -122,6 +122,10 @@
     text-decoration: underline;
 }
 
+.bio{
+    text-align: justify;
+}
+
 @media all and (max-width:1200px) {
     .preview-panel{
         clear:left;

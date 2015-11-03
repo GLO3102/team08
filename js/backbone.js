@@ -745,7 +745,7 @@
   // more analogous to a table full of data ... or a small slice or page of that
   // table, or a collection of rows that belong together for a particular reason
   // -- all of the messages in this particular folder, all of the documents
-  // belonging to this particular author, and so on. Collections maintain
+  // belonging to this particular author, and so on. collections maintain
   // indexes of their models, both in order, and for lookup by `id`.
 
   // Create a new **Collection**, perhaps to contain a specific type of `model`.
@@ -1158,7 +1158,7 @@
   });
 
   // Underscore methods that we want to implement on the Collection.
-  // 90% of the core usefulness of Backbone Collections is actually implemented
+  // 90% of the core usefulness of Backbone collections is actually implemented
   // right here:
   var collectionMethods = { forEach: 3, each: 3, map: 3, collect: 3, reduce: 4,
       foldl: 4, inject: 4, reduceRight: 4, foldr: 4, find: 3, detect: 3, filter: 3,

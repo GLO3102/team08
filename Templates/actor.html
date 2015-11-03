@@ -1,7 +1,15 @@
 <div id="page-wrapper">
 
     <div class="container-fluid">
-
+        <% if(fail){ %>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Artist not found.
+                </h1>
+            </div>
+        </div>
+        <% }else{ %>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
@@ -14,37 +22,26 @@
         <!-- /.row -->
 
         <div class="row">
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div id="container-actor-img">
-                        <img class="photoActor"
-                             src="<%= actor.img %>"/>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="list-group">
-                            <div class="list-group-item">
-                                <span class="badge"><%= actor.primaryGenreName %></span>
-                                Genre
-                            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-2">
+                    <div class="panel panel-default">
+                        <div id="container-actor-img">
+                            <img class="photoActor"
+                                 src="<%= actor.img %>"/>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="previewFrame" onclick="HidePreview()" class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-10">
                     <div class="panel panel-default">
-                        <div class="panel-body container_preview">
-                            <div class="preview-panel">
-                                <div id='blogvision'>
-                                    <iframe src='http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19554604'></iframe>
-                                    <br/>
-                                    <a href='http://www.allocine.fr/film/fichefilm_gen_cfilm=238324.html'
-                                       target='_blank'>3-Headed Shark Attack</a>
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <h2>Bio</h2>
+                                    <h4 class="bio"><%= actor.bio %></h4>
+                                </div>
+                                <div class="list-group-item">
+                                    <span class="badge"><%= actor.primaryGenreName %></span>
+                                    Genre
                                 </div>
                             </div>
                         </div>
@@ -57,55 +54,29 @@
                         <h3 class="panel-title">Filmography</h3>
                     </div>
                     <div class="panel-body">
-                        <div class="col-lg-2">
+                        <!-- modele de film -->
+                        <% var count = 0;
+                        for(var i = 0; i< movies.length ; i++){%>
+                        <div class="col-lg-1">
                             <div class="container-FilmographySnippet">
                                 <div class=" FilmographySnippet">
-                                    <img src="http://www.schnittberichte.com/news/pics2/3headed.jpg"/>
-
+                                    <a href="#"><img src="<%= movies[i].artworkUrl100 %>"/></a>
                                     <div>
-                                        3-Headed Shark Attack
+                                        <%= movies[i].trackName %>
                                     </div>
-                                    <div>
-                                        2015
-                                    </div>
-                                    <button onclick="ShowPreview()" type="PreviewButton">Preview</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-2">
-                            <div class="container-FilmographySnippet">
-                                <div class="FilmographySnippet">
-                                    <img src="http://fr.web.img3.acsta.net/r_160_240/b_1_d6d6d6/pictures/15/05/23/17/16/365589.jpg"/>
-
-                                    <div>
-                                        Blackwater
-                                    </div>
-                                    <div>
-                                        2015
-                                    </div>
-                                    <button onclick="ShowPreview()" type="PreviewButton">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="container-FilmographySnippet">
-                                <div class="FilmographySnippet">
-                                    <img src="http://fr.web.img2.acsta.net/r_160_240/b_1_d6d6d6/pictures/14/04/29/17/47/095832.jpg"/>
-
-                                    <div>
-                                        Bad Ass 2: Bad Asses
-                                    </div>
-                                    <div>
-                                        2014
-                                    </div>
-                                    <button onclick="ShowPreview()" type="PreviewButton">Preview</button>
-                                </div>
-                            </div>
-                        </div>
+                        <% count++;
+                            if(count % 12 == 0){ %>
+                                <div class="clearleft"></div>
+                            <%}
+                        }%>
                     </div>
                 </div>
             </div>
         </div>
+        <% } %>
     </div>
     <!-- /.container-fluid -->
 

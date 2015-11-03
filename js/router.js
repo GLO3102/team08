@@ -4,9 +4,9 @@ define([
     'backbone',
     'views/menu',
     'views/watchlists',
-    'views/actor',
+    'views/actorViews/actorMain',
     'views/movie'
-], function($, _, Backbone, MenuView, WatchlistView,ActorView, MovieView){
+], function($, _, Backbone, MenuView, WatchlistView,ActorMainView, MovieView){
     var AppRouter = Backbone.Router.extend({
         routes: {
             // Default
@@ -32,7 +32,8 @@ define([
             var menuView = new MenuView();
             menuView.render();
 
-            new ActorView();
+            var actorMainView = new ActorMainView();
+            actorMainView.render("Matt Damon");
         });
 
         app_router.on('route:searchMovie', function(){
@@ -40,6 +41,7 @@ define([
             menuView.render();
 
             new MovieView();
+            
         });
 
         Backbone.history.start();
