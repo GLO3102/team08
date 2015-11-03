@@ -4,12 +4,14 @@ define([
     'backbone',
     'views/menu',
     'views/watchlists',
-    'views/actor'
-], function($, _, Backbone, MenuView, WatchlistView,ActorView){
+    'views/actor',
+    'views/movie'
+], function($, _, Backbone, MenuView, WatchlistView,ActorView, MovieView){
     var AppRouter = Backbone.Router.extend({
         routes: {
             // Default
             'actor/' : 'searchActor',
+            'movie/' : 'searchMovie',
             '*actions': 'defaultAction'
 
         }
@@ -31,6 +33,13 @@ define([
             menuView.render();
 
             new ActorView();
+        });
+
+        app_router.on('route:searchMovie', function(){
+            var menuView = new MenuView();
+            menuView.render();
+
+            new MovieView();
         });
 
         Backbone.history.start();

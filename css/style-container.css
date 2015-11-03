@@ -28,11 +28,11 @@
     display: none;
 }
 
-.showTVCover, .movieCover , .photoActor{
+.showTVCover, .movieCover , .photoActor, .photoMovie{
     max-width: 100%;
 }
 
-.photoActor{
+.photoActor, .photoMovie{
     display: block;
     margin-left: auto;
     margin-right: auto;
