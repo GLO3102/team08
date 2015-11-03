@@ -6,7 +6,7 @@ define([
     'underscore',
     'backbone',
     'models/actorModel',
-    'models/actorImageModel'
+    '../models/actorImageModel'
 ], function($, _, Backbone, ActorModel,ActorImageModel){
     var ActorView = Backbone.View.extend({
         initialize: function() {
@@ -19,7 +19,7 @@ define([
                 self.modelActorImage.fetch().complete(function(){
                     self.modelActor = _.extend(self.modelActor.toJSON(),{img:self.modelActorImage.toJSON().urlPhoto,bio:self.modelActorImage.toJSON().bio});
                     parent.model.actor = self.modelActor;
-                    callback(parent,request);
+                    callback(parent,self.modelActor.artistId);
                 });
             });
         }

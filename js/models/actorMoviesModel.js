@@ -8,5 +8,5 @@ define([
     var ActorMoviesModel = Backbone.Model.extend({
     });
 
-    return MenuModel;
+    return ActorMoviesModel;
 });

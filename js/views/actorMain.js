@@ -7,8 +7,9 @@ define([
     'backbone',
     'models/actorMainModel',
     'views/actor',
+    'views/actorMovies',
     'text!../../templates/actor.html'
-],function($,_,Backbone,ActorMainModel, Actor,ActorTemplate){
+],function($,_,Backbone,ActorMainModel, Actor,ActorMovies,ActorTemplate){
     var ActorMain = Backbone.View.extend({
         el: $('#Page_Container'),
         initialize: function() {
@@ -22,7 +23,8 @@ define([
             actor.render(self,request,self.renderActorMovies);
         },
         renderActorMovies: function(self,request){
-            self.compileTemplate(self)
+            var actorMovies = new ActorMovies();
+            actorMovies.render(self,request,self.compileTemplate);
         },
         compileTemplate:function(self){
             var compiledTemplate = _.template(ActorTemplate);
