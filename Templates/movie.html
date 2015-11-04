@@ -1,16 +1,28 @@
+
 <div id="page-wrapper">
 
     <div class="container-fluid">
+        <% if(fail){ %>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Movie not found.
 
+                </h1>
+            </div>
+        </div>
+        <% }else{ %>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
                     <%= movie.trackName %>
                     <a class="itunesLogoContainer" href="<%= movie.trackViewUrl %>"><img class="itunesLogo"
-                                                                                          src="img/itunes_logo.jpg"/></a>
+                                                                                         src="img/itunes_logo.jpg"/></a>                                                                 src="img/itunes_logo.jpg"/></a>
                 </h1>
             </div>
         </div>
+        <!-- /.row -->
+
         <!-- /.row -->
         <!-- Preview container -->
         <div class="row">
@@ -19,62 +31,62 @@
                     <div class="panel-body container_preview">
                         <div class="preview-panel">
                             <div class="blogvision">
-                                <iframe id="preview-frame"
-                                        src="<%= movie.previewUrl%>"></iframe>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                                <iframe id="preview-frame trailer">
+                                    <%= movie.preview %>
+                                 </iframe>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
 
-        <!-- Movie Description Panel -->
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div id="container-movie-img">
-                        <img class="photoMovie"
-                             src="<%= movie.artworkUrl100 %>"/>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="list-group">
-                            <div class="list-group-item">
-                                <span class="badge"><%= movie.country%></span>
-                                Country
-                            </div>
-                            <div class="list-group-item">
-                                <span class="badge"><%= movie.kind%></span>
-                                Genre
-                            </div>
-                            <div class="list-group-item">
-                                <span class="badge"><%= movie.releaseDate %></span>
-                                Release Date
-                            </div>
-                            <div class="list-group-item">
-                                <span class="badge"><%= movie.contentAdvisoryRating %> </span>
-                                Rating
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Description</h3>
-                    </div>
-                    <div class="panel-body">
-                        <%= movie.longDescription %>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.container-fluid -->
+             <div class="col-lg-4">
+                 <div class="panel panel-default">
+                     <div id="container-movie-img">
+                         <img class="photoMovie"
+                              src="<%= movie.artworkUrl100 %>"/>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-lg-4">
+                 <div class="panel panel-default">
+                     <div class="panel-body">
+                         <div class="list-group">
+                             <div class="list-group-item">
+                                 <span class="badge"><%= movie.country%></span>
+                                 Country
+                             </div>
+                             <div class="list-group-item">
+                                 <span class="badge"><%= movie.kind%></span>
+                                 Genre
+                             </div>
+                             <div class="list-group-item">
+                                 <span class="badge"><%= movie.releaseDate %></span>
+                                 Release Date
+                             </div>
+                             <div class="list-group-item">
+                                 <span class="badge"><%= movie.contentAdvisoryRating %> </span>
+                                 Rating
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-lg-4">
+                 <div class="panel panel-default">
+                     <div class="panel-heading">
+                         <h3 class="panel-title">Description</h3>
+                     </div>
+                     <div class="panel-body">
+                         <%= movie.longDescription %>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+
+     </div>
+     <!-- /.container-fluid -->
 
 </div>
 <!-- /#page-wrapper -->

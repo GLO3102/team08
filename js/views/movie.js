@@ -6,28 +6,31 @@ define([
     'underscore',
     'backbone',
     'models/movieModel',
+    'models/moviePreviewModel',
     'text!../../templates/movie.html'
-], function($, _, Backbone, MovieModel,MovieTemplate){
+], function($, _, Backbone, MovieModel,MoviePreviewModel,MovieTemplate){
     var MovieView = Backbone.View.extend({
         el: $('#Page_Container'),
-        initialize: function() {
+        initialize: function () {
         },
 
-        render: function(request) {
+        render: function (parent, request, callback) {
             var self = this;
-            console.log("request in movie",request);
             this.modelMovie = new MovieModel(request);
-
-            this.modelMovie.fetch().complete(function(){
-                self.modelMovie = _.extend(self.modelMovie.toJSON());
-                var compiledTemplate = _.template(MovieTemplate);
-                console.log(self.modelMovie);
-                self.$el.html( compiledTemplate({movie:self.modelMovie})) ;
+            this.modelPreviewMovie = new MoviePreviewModel(request);
+            console.log(this.modelPreviewMovie);
+            this.modelMovie.fetch().complete(function () {
+                self.modelPreviewMovie.fetch().complete(function () {
+                    self.modelMovie = _.extend(self.modelMovie.toJSON(), {preview: self.modelPreviewMovie.toJSON()});
+                    parent.model.movie = self.modelMovie;
+                    parent.complileTemplate(parent);
+                });
 
             });
 
-        }
+        },
     });
 
     return MovieView;
-});;
+});
+
