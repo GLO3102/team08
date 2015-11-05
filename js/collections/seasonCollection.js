@@ -4,7 +4,7 @@
 define([
     'underscore',
     'backbone',
-    '../models/serieModels/seasonModel'
+    '../models/seasonModel'
 ], function(_, Backbone, SeasonModel){
     var SeasonCollection = Backbone.Collection.extend({
         model: SeasonModel,
