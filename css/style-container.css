@@ -29,7 +29,7 @@
 }
 
 .showTVCover, .movieCover , .photoActor, .photoMovie{
-    max-width: 100%;
+    width: 100%;
 }
 
 .photoActor, .photoMovie{

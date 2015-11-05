@@ -19,6 +19,7 @@ define([
                 self.modelActorImage.fetch().complete(function(){
                     self.modelActor = _.extend(self.modelActor.toJSON(),{img:self.modelActorImage.toJSON().urlPhoto,bio:self.modelActorImage.toJSON().bio});
                     parent.model.actor = self.modelActor;
+                    console.log("model",self.modelActor);
                     if(self.modelActor.artistName !== undefined)
                     {
                         parent.model.fail = false;
