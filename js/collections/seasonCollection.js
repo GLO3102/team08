@@ -4,7 +4,7 @@
 define([
     'underscore',
     'backbone',
-    '../models/seasonModel'
+    '../models/SerieModels/seasonModel'
 ], function(_, Backbone, SeasonModel){
     var SeasonCollection = Backbone.Collection.extend({
         model: SeasonModel,
@@ -30,10 +30,11 @@ define([
                {
                    var img_url = item.artworkUrl100;
                    item.artworkUrl400 = img_url.replace('100x100bb-85','400x400bb-85');
+                   console.log("test string",item.collectionName);
                    newCollection.push(item);
                }
             });
-            return _.sortBy(newCollection,'collectionName');
+            return _.sortBy(newCollection,'collectionId');
         }
     });
 

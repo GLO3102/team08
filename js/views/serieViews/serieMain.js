@@ -5,7 +5,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    '../../models/serieMainModel',
+    '../../models/SerieModels/serieMainModel',
     'views/serieViews/season',
     'text!../../../templates/serie.html'
 ],function($,_,Backbone,SerieMainModel, SeasonView,SerieTemplate){

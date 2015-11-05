@@ -8,7 +8,7 @@
                 <h1 class="page-header">
                     <%= serie.seasons[0].artistName %>
                     <a class="itunesLogoContainer"
-                       href="https://itunes.apple.com/us/tv-season/the-walking-dead-season-6/id1032845253"
+                       href="<%= serie.seasons[serie.noSeason].collectionViewUrl %>"
                        target="_blank"><img class="itunesLogo" src="img/itunes_logo.jpg"/></a>
                 </h1>
             </div>
@@ -28,8 +28,8 @@
                             <div class="preview-panel">
                                 <div class='blogvision'>
                                     <iframe id="preview-frame"
-                                            src='http://www.allocine.fr/_video/iblogvision.aspx?cmedia=19555012'></iframe>
-                                    <br/><a href='http://www.allocine.fr/series/ficheserie_gen_cserie=7330.html'
+                                            src='<%= serie.urlTrailer %>'></iframe>
+                                    <br/><a href='<%= serie.seasons[serie.noSeason].collectionViewUrl %>'
                                             target='_blank'><%= serie.seasons[0].artistName %></a></div>
                             </div>
                             <div class="showTv_otherSeason">

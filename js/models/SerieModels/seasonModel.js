@@ -3,10 +3,10 @@
  */
 define([
     'underscore',
-    '../backbone'
+    '../../backbone'
 ], function(_, Backbone){
-    var SeasonMainModel = Backbone.Model.extend({
+    var SeasonModel = Backbone.Model.extend({
     });
 
-    return SeasonMainModel;
+    return SeasonModel;
 });

@@ -5,8 +5,9 @@ define([
     '../../jquery',
     'underscore',
     'backbone',
-    'collections/seasonCollection'
-], function($, _, Backbone, SeasonCollection){
+    'collections/seasonCollection',
+    'models/SerieModels/serieTrailerModel'
+], function($, _, Backbone, SeasonCollection, SerieTrailerModel){
     var SerieView = Backbone.View.extend({
         initialize:function(noSeason,noEpisode){
             this.noSeason = noSeason;
@@ -17,8 +18,7 @@ define([
             var self = this;
             console.log("request in serie",request);
             this.seasonCollection = new SeasonCollection(request);
-
-            this.seasonCollection.fetch().complete(function(){
+            this.seasonCollection.fetch().done(function(){
                 parent.model.seasons =  _.extend(self.seasonCollection.toJSON());
                 if(self.noSeason === undefined)
                     parent.model.noSeason = parent.model.seasons.length - 1;
@@ -26,7 +26,12 @@ define([
                     parent.model.noSeason = self.noSeason;
 
                 parent.model.noEpisode = self.noEpisode;
-                callback(parent);
+
+                self.serieTrailerModel = new SerieTrailerModel(parent.model.seasons[parent.model.noSeason].artistName+"+season"+(parseInt(parent.model.noSeason)+1));
+                self.serieTrailerModel.fetch().done(function() {
+                    parent.model = _.extend(parent.model,self.serieTrailerModel.toJSON());
+                    callback(parent);
+                });
             });
 
         }
