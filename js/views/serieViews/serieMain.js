@@ -15,11 +15,15 @@ define([
             this.model = new SerieMainModel();
         },
         renderSerie: function(request){
-            var seasonView = new SeasonView(undefined,0);
+            var seasonView = new SeasonView(undefined,undefined);
             seasonView.render(this,request,this.compileTemplate);
         },
         renderSeason: function(request,noSeason){
-            var seasonView = new SeasonView(noSeason,0);
+            var seasonView = new SeasonView(noSeason,undefined);
+            seasonView.render(this,request,this.compileTemplate);
+        },
+        renderEpisode: function(request,noSeason, noEpisode){
+            var seasonView = new SeasonView(noSeason,noEpisode);
             seasonView.render(this,request,this.compileTemplate);
         },
         compileTemplate:function(self){

@@ -6,8 +6,9 @@ define([
     'underscore',
     'backbone',
     'collections/seasonCollection',
+    'collections/episodeCollection',
     'models/SerieModels/serieTrailerModel'
-], function($, _, Backbone, SeasonCollection, SerieTrailerModel){
+], function($, _, Backbone, SeasonCollection, EpisodeCollection, SerieTrailerModel){
     var SerieView = Backbone.View.extend({
         initialize:function(noSeason,noEpisode){
             this.noSeason = noSeason;
@@ -16,7 +17,6 @@ define([
         },
         render: function(parent,request,callback) {
             var self = this;
-            console.log("request in serie",request);
             this.seasonCollection = new SeasonCollection(request);
             this.seasonCollection.fetch().done(function(){
                 parent.model.seasons =  _.extend(self.seasonCollection.toJSON());
@@ -25,12 +25,25 @@ define([
                 else
                     parent.model.noSeason = self.noSeason;
 
-                parent.model.noEpisode = self.noEpisode;
-
-                self.serieTrailerModel = new SerieTrailerModel(parent.model.seasons[parent.model.noSeason].artistName+"+season"+(parseInt(parent.model.noSeason)+1));
-                self.serieTrailerModel.fetch().done(function() {
-                    parent.model = _.extend(parent.model,self.serieTrailerModel.toJSON());
-                    callback(parent);
+                self.episodeCollection = new EpisodeCollection(parent.model.seasons[parent.model.noSeason].collectionId);
+                self.episodeCollection.fetch().done(function(){
+                    parent.model.episodes = self.episodeCollection.toJSON();
+                    if(self.noEpisode === undefined){
+                        self.serieTrailerModel = new SerieTrailerModel(parent.model.seasons[parent.model.noSeason].artistName+"+season"+(parseInt(parent.model.noSeason)+1));
+                        self.serieTrailerModel.fetch().done(function() {
+                            parent.model = _.extend(parent.model,self.serieTrailerModel.toJSON());
+                            callback(parent);
+                        });
+                    }
+                    else{
+                        parent.model.noEpisode = self.noEpisode;
+                        var request = parent.model.seasons[parent.model.noSeason].artistName+"+season"+(parseInt(parent.model.noSeason)+1)+parent.model.episodes[parent.model.noEpisode].trackName;
+                        self.serieTrailerModel = new SerieTrailerModel(request);
+                        self.serieTrailerModel.fetch().done(function() {
+                            parent.model = _.extend(parent.model,self.serieTrailerModel.toJSON());
+                            callback(parent);
+                        });
+                    }
                 });
             });
 

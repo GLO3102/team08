@@ -22,32 +22,50 @@
                     <div class="panel-body">
 
                         <div class="container_preview">
-                            <div class="showTv_list">
-                                <iframe src="html/showTv_list.html"></iframe>
+                            <div class="season_list col-lg-3 panel panel-default">
+                                <div class="panel-heading">Seasons</div>
+                                <div class="panel-body showTv_list">
+                                    <div class="table-responsive ">
+                                        <table class="table">
+                                            <tbody>
+                                            <% for(var i = 0;i<serie.seasons.length;i++){ %>
+                                            <% if(i == serie.noSeason){ %>
+                                                <tr><td><a href="/projetSession/index.html#serie/<%= serie.seasons[0].artistName %>/<%= i %>"><%= serie.seasons[i].collectionName %></a></td></tr>
+                                            <% } else{ %>
+                                                <tr><td><a href="/projetSession/index.html#serie/<%= serie.seasons[0].artistName %>/<%= i %>"><%= serie.seasons[i].collectionName %></a></td></tr>
+                                            <%}} %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="preview-panel">
+                            <div class="preview-panel col-lg-5">
                                 <div class='blogvision'>
                                     <iframe id="preview-frame"
                                             src='<%= serie.urlTrailer %>'></iframe>
                                     <br/><a href='<%= serie.seasons[serie.noSeason].collectionViewUrl %>'
-                                            target='_blank'><%= serie.seasons[0].artistName %></a></div>
+                                            target='_blank'><%= serie.seasons[0].artistName %></a>
+                                </div>
                             </div>
-                            <div class="showTv_otherSeason">
-                                <ul>
-                                    <% for(var i = 0;i<serie.seasons.length;i++){ %>
-                                        <% if(i == serie.noSeason){ %>
-                                            <li id="active"><a href="/projetSession/index.html#serie/<%= serie.seasons[0].artistName %>/<%= i %>"><%= serie.seasons[i].collectionName %></a></li>
-                                        <% } else{ %>
-                                            <li><a href="/projetSession/index.html#serie/<%= serie.seasons[0].artistName %>/<%= i %>"><%= serie.seasons[i].collectionName %></a></li>
-                                    <%}} %>
-                                </ul>
+                            <div class="season_list col-lg-4 panel panel-default">
+
+                                <div class="panel-heading">Episodes</div>
+                                <div class="panel-body showTv_list">
+                                    <div class="table-responsive ">
+                                        <table class="table">
+                                            <tbody>
+                                            <% for(var i = 0;i<serie.episodes.length;i++){ %>
+                                                <tr><td><a href="/projetSession/index.html#serie/<%= serie.seasons[0].artistName %>/<%= serie.noSeason %>/<%= i %>"><%= serie.episodes[i].trackName %></a></td></tr>
+                                            <%} %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                             <!--- showTv_otherSeason-->
-
                         </div>
-                        <!-- fin container_preview> -->
-
                     </div>
+                        <!-- fin container_preview> -->
                 </div>
             </div>
         </div>

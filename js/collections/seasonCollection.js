@@ -29,7 +29,7 @@ define([
                if(item.artistName == serieName)
                {
                    var img_url = item.artworkUrl100;
-                   item.artworkUrl400 = img_url.replace('100x100bb-85','400x400bb-85');
+                   item.artworkUrl400 = img_url.replace('100x100bb','400x400bb');
                    console.log("test string",item.collectionName);
                    newCollection.push(item);
                }

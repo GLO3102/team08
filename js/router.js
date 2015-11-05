@@ -18,6 +18,7 @@ define([
             'serie/' : 'searchSerie',
             'serie/:name' : 'searchSerieName',
             'serie/:name/:season' : 'searchSerieSeason',
+            'serie/:name/:season/:episode' : 'searchSerieEpisode',
             '*actions': 'defaultAction'
 
         }
@@ -88,6 +89,14 @@ define([
 
             var serieView = new  SerieView();
             serieView.renderSeason(name,noSeason);
+        });
+
+        app_router.on('route:searchSerieEpisode', function(name,noSeason,noEpisode){
+            var menuView = new MenuView();
+            menuView.render(name);
+
+            var serieView = new  SerieView();
+            serieView.renderEpisode(name,noSeason,noEpisode);
         });
 
         Backbone.history.start();
