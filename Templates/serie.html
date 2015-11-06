@@ -9,7 +9,7 @@
                     <%= serie.seasons[0].artistName %>
                     <a class="itunesLogoContainer"
                        href="<%= serie.seasons[serie.noSeason].collectionViewUrl %>"
-                       target="_blank"><img class="itunesLogo" src="img/itunes_logo.jpg"/></a>
+                       target="_blank"><img class="itunesLogo" src="img/itunes_logo.jpg"/><.trackName/a>
                 </h1>
             </div>
         </div>
@@ -28,7 +28,7 @@
                                     <div class="table-responsive ">
                                         <table class="table">
                                             <tbody>
-                                            <% for(var i = 0;i<serie.seasons.length;i++){ %>
+                                            <% for(var i = 0;i !== serie.seasons.length;i++){ %>
                                             <% if(i == serie.noSeason){ %>
                                                 <tr><td><a href="/projetSession/index.html#serie/<%= serie.seasons[0].artistName %>/<%= i %>"><%= serie.seasons[i].collectionName %></a></td></tr>
                                             <% } else{ %>
@@ -54,7 +54,7 @@
                                     <div class="table-responsive ">
                                         <table class="table">
                                             <tbody>
-                                            <% for(var i = 0;i<serie.episodes.length;i++){ %>
+                                            <% for(var i = 0;i !== serie.episodes.length;i++){ %>
                                                 <tr><td><a href="/projetSession/index.html#serie/<%= serie.seasons[0].artistName %>/<%= serie.noSeason %>/<%= i %>"><%= serie.episodes[i].trackName %></a></td></tr>
                                             <%} %>
                                             </tbody>

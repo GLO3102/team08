@@ -7,7 +7,7 @@ define([
     'backbone',
     '../../models/SerieModels/serieMainModel',
     'views/serieViews/season',
-    'text!../../../templates/serie.html'
+    'text!../../../Templates/serie.html'
 ],function($,_,Backbone,SerieMainModel, SeasonView,SerieTemplate){
     var SerieMain = Backbone.View.extend({
         el: $('#Page_Container'),

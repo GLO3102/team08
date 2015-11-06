@@ -3,7 +3,7 @@ define([
     'underscore',
     'backbone',
     '../models/watchlistsCollection',
-    'text!../../templates/watchlists.html',
+    'text!../../Templates/watchlists.html',
     '../models/watchlistModel',
 ], function($, _, Backbone, WatchListCollection, watchlistsTemplate, WatchlistModel){
     var WatchListsView = Backbone.View.extend({

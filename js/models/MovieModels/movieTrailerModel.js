@@ -5,29 +5,26 @@ define([
     'underscore',
     'backbone'
 ], function(_, Backbone){
-
-    var MoviePreviewModel = Backbone.Model.extend({
+    var MovieTrailerModel = Backbone.Model.extend({
         initialize:function(request){
             this.request = request;
-
         },
-
         sync:function(method, collection, options){
             var self = this;
+
             var params = _.extend({
-                url:"https://www.googleapis.com/youtube/v3/search?part=snippet&q="+self.request+"+trailer&key=AIzaSyDKTntFdJK_DH-cElBKy8nwOgjXOpoPvf0",
-                type:'GET',
-                jsonp:'jsonp'
+                url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+self.request+'+trailer&key=AIzaSyDKTntFdJK_DH-cElBKy8nwOgjXOpoPvf0',
+                type : 'GET',
+                dataType: "jsonp"
             }, options);
 
             return $.ajax(params);
         },
         parse: function(response){
-            return response[0];
+            console.log(response);
+            return {urlTrailer:"https://www.youtube.com/embed/"+response.items[0].id.videoId};
         }
     });
 
-
-
-    return MoviePreviewModel;
+    return MovieTrailerModel;
 });

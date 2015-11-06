@@ -5,7 +5,7 @@ define([
     'views/menu',
     'views/watchlists',
     'views/actorViews/actorMain',
-    'views/movie',
+    'views/movieViews/movieMain',
     'views/serieViews/serieMain'
 ], function($, _, Backbone, MenuView, WatchlistView,ActorMainView, MovieView, SerieView){
     var AppRouter = Backbone.Router.extend({
@@ -56,7 +56,7 @@ define([
             menuView.render();
 
             var movieView = new MovieView();
-            movieView.render('saw');
+            movieView.render('spectre');
         });
 
         app_router.on('route:searchMovieName', function(name){

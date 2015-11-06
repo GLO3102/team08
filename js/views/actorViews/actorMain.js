@@ -8,7 +8,7 @@ define([
     'models/actorModels/actorMainModel',
     'views/actorViews/actor',
     'views/actorViews/actorMovies',
-    'text!../../../templates/actor.html'
+    'text!../../../Templates/actor.html'
 ],function($,_,Backbone,ActorMainModel, Actor,ActorMovies,ActorTemplate){
     var ActorMain = Backbone.View.extend({
         el: $('#Page_Container'),
