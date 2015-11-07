@@ -8,6 +8,7 @@ define([
     var MovieTrailerModel = Backbone.Model.extend({
         initialize:function(request){
             this.request = request;
+            console.log(request);
         },
         sync:function(method, collection, options){
             var self = this;
@@ -22,7 +23,7 @@ define([
         },
         parse: function(response){
             console.log(response);
-            return {urlTrailer:"https://www.youtube.com/embed/"+response.items[0].id.videoId};
+            return {urlTrailerMovie:"https://www.youtube.com/embed/"+response.items[0].id.videoId};
         }
     });
 

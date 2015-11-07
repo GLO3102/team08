@@ -10,6 +10,7 @@ define([
         model: MovieModel,
         initialize:function(request){
             this.request = request;
+            console.log(request);
 
         },
         sync:function(method, collection, options){
@@ -23,7 +24,7 @@ define([
             return $.ajax(params);
         },
         parse:function(response){
-            return response.results[0];
+            return response.results;
 
 
         }
