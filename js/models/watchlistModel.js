@@ -9,7 +9,7 @@ define([
             movies: []
         },
         idAttribute: "id",
-        urlRoot: 'http://'+urlServer+':3000/unsecure/watchlists',
+        urlRoot: 'http://' + urlServer + ':3000/unsecure/watchlists',
 
         save: function() {
             $.post(this.urlRoot, this.toJSON())
@@ -19,8 +19,20 @@ define([
             $.ajax({
                 url: this.urlRoot + '/' + data.id,
                 type: 'PUT',
-                data: data,
-                success: options.success
+                data: JSON.stringify(data),
+                success: options.success,
+                contentType: "application/JSON; charset=utf-8"
+            });
+        },
+
+        addMovie: function(postData) {
+            var movies = this.get("movies");
+            movies.push(postData);
+            this.set("movies", movies);
+            $.ajax({
+                url: 'http://' + urlServer + ':3000/unsecure/watchlists/' + this.get("id") + '/movies',
+                type: 'POST',
+                data: postData
             });
         }
     });
