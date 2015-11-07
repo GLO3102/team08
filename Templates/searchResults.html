@@ -1,0 +1,10 @@
+<% _.each(searchResults, function(result) { %>
+    <div>
+        <%= result.trackName %>
+        <button class="AddToWatchListButton"
+                data-id="<%= result.trackId %>"
+                data-name="<%= result.trackName %>"
+                data-image="<%= result.artworkUrl100 %>"
+                data-date="<%= result.releaseDate %>">Add To WatchList</button>
+    </div>
+<% }); %>

@@ -21,58 +21,39 @@
                                     data-id="<%= watchlist.id %>">Modify</button>
                         </div>
                         <div class="panel-body">
-                            <a href="movie.html">
-                                <div class="col-lg-2">
-                                    <div class="container-FilmographySnippet">
-                                        <div class=" FilmographySnippet">
-                                            <img src="http://fr.web.img3.acsta.net/medias/nmedia/18/72/29/76/19505056.jpg"/>
+                            <% _.each(watchlist.movies, function(movie) { %>
+                                    <div class="col-lg-2">
+                                        <div class="container-FilmographySnippet">
+                                            <a href="movie.html">
+                                            <div class=" FilmographySnippet">
+                                                <img src="<%= movie.artworkUrl100 %>"/>
 
-                                            <div>
-                                                Alpha & Omega - 3D
+                                                <div>
+                                                    <%= movie.trackName %>
+                                                </div>
+                                                <div>
+                                                    <%= (new Date(movie.releaseDate)).toDateString() %>
+                                                </div>
                                             </div>
-                                            <div>
-                                                June 26th, 2013
-                                            </div>
+                                            </a>
+                                            <button class="RemoveFromWatchListButton"
+                                                    data-watchlist="<%= watchlist.id %>"
+                                                    data-id="<%= movie.trackId %>">Remove</button>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a href="movie.html">
-                                <div class="col-lg-2">
-                                    <div class="container-FilmographySnippet">
-                                        <div class=" FilmographySnippet">
-                                            <img src="http://fr.web.img5.acsta.net/r_160_240/b_1_d6d6d6/pictures/15/07/02/12/46/372128.jpg"/>
-
-                                            <div>
-                                                Everest
-                                            </div>
-                                            <div>
-                                                September 23, 2015
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="movie.html">
-                                <div class="col-lg-2">
-                                    <div class="container-FilmographySnippet">
-                                        <div class=" FilmographySnippet">
-                                            <img src="http://fr.web.img4.acsta.net/r_160_240/b_1_d6d6d6/pictures/15/07/07/12/04/373064.jpg"/>
-
-                                            <div>
-                                                Le Transporteur Héritage
-                                            </div>
-                                            <div>
-                                                September 9, 2015
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                            <% }); %>
                         </div>
                     </div>
                 </div>
             <% }); %>
+            <input id="searchMoviesInputBox" />
+            <button id="searchMoviesButton">Search</button>
+            <select id="watchListIds">
+                <% _.each(watchlists, function(watchlist) { %>
+                    <option value="<%= watchlist.id %>"> <%= watchlist.name %> </option>
+                <% }); %>
+            </select>
+            <div id="ResultList" />
         </div>
         <!-- /.row -->
 
