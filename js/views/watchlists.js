@@ -32,7 +32,8 @@ define([
             'click .RemoveWatchListButton' : 'removeWatchList',
             'click .ModifyWatchListButton' : 'modifyWatchList',
             'click #searchMoviesButton' : 'searchMovies',
-            'click .AddToWatchListButton' : 'addMovieToWatchlist'
+            'click .AddToWatchListButton' : 'addMovieToWatchlist',
+            'click .RemoveFromWatchListButton' : 'removeMovieFromWatchList'
         },
 
         isValidName : function(name) {
@@ -129,6 +130,31 @@ define([
             var watchlist = this.collection.get(watchListId);
             watchlist.addMovie(postData);
             this.render(undefined, this.collection.toJSON());
+        },
+
+        removeMovieFromWatchList: function(ev) {
+            var _this = this;
+            var watchListId = $(ev.currentTarget).data('watchlist');
+            var modelToUpdate = this.collection.get(watchListId);
+            var movieId = $(ev.currentTarget).data('id');
+
+            var movies = modelToUpdate.get("movies");
+            movies = movies.filter(function(movie) {
+                return movie.trackId !== movieId;
+            });
+
+            var data = {
+                "name": modelToUpdate.get('name'),
+                id: watchListId,
+                "movies": movies
+            };
+
+            var options = {
+                success: function(model, response) {
+                    _this.display();
+                }
+            };
+            modelToUpdate.update(data, options);
         }
     });
 

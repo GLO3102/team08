@@ -22,9 +22,9 @@
                         </div>
                         <div class="panel-body">
                             <% _.each(watchlist.movies, function(movie) { %>
-                                <a href="movie.html">
                                     <div class="col-lg-2">
                                         <div class="container-FilmographySnippet">
+                                            <a href="movie.html">
                                             <div class=" FilmographySnippet">
                                                 <img src="<%= movie.artworkUrl100 %>"/>
 
@@ -32,12 +32,15 @@
                                                     <%= movie.trackName %>
                                                 </div>
                                                 <div>
-                                                    <%= movie.releaseDate %>
+                                                    <%= (new Date(movie.releaseDate)).toDateString() %>
                                                 </div>
                                             </div>
+                                            </a>
+                                            <button class="RemoveFromWatchListButton"
+                                                    data-watchlist="<%= watchlist.id %>"
+                                                    data-id="<%= movie.trackId %>">Remove</button>
                                         </div>
                                     </div>
-                                </a>
                             <% }); %>
                         </div>
                     </div>
