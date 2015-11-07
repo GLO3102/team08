@@ -1,4 +1,4 @@
-urlServer = "localhost";
+urlServer = "umovie.herokuapp.com";
 
 define([
     'jquery',
