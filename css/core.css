@@ -10,12 +10,20 @@ body {
     }
 }
 
-.itunesLogo {
+.itunesLogo , .add-watchlist-button{
     height: 40px;
 }
 
 .itunesLogoContainer {
     float: right;
+}
+
+.add-watchlist-button{
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    font-size:0.5em;
+    margin-left:15%;
 }
 
 #wrapper {

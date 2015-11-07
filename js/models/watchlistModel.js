@@ -34,6 +34,15 @@ define([
                 type: 'POST',
                 data: postData
             });
+        },
+
+        addMovie: function(data,options,movie){
+            $.ajax({
+                url:this.urlRoot + '/' + data.id + movie.trackId,
+                type: 'POST',
+                data: data,
+                success:options.success
+            });
         }
     });
 

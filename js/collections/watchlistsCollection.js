@@ -1,6 +1,6 @@
 define([
     'underscore',
-    'backbone',
+    '../backbone',
     'models/watchlistModel'
 ], function(_, Backbone, WatchlistModel){
     var WatchlistCollection = Backbone.Collection.extend({
