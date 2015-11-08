@@ -122,7 +122,8 @@ define([
                 "trackId": currentElement.data('id'),
                 "trackName": currentElement.data('name'),
                 "releaseDate": currentElement.data('date'),
-                "artworkUrl100": currentElement.data('image')
+                "artworkUrl100": currentElement.data('image'),
+                "artworkUrl300": currentElement.data('image').replace('100x100bb','300x300bb')
             };
 
             var selectElement = document.getElementById("watchListIds");
