@@ -6,10 +6,17 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    <%=movie.movies[0].trackName %>
-                    <input class="<%= movie.movies[0].trackId %>" value="<%= movie.movies[0].trackName %>" placeholder="Name" hidden><button class="add-watchlist-button"
-                            data-id="<%= movie.movies[0].trackId %>">+Add watchlist </button>
-                    <%= movie.movies[0].trackId%>
+                    <%= movie.movies[0].trackName %>
+                    <input class="<%= movie.movies[0].trackId %> " id = "<%= movie.movies[0] %>" value="<%= movie.movies[0].trackName %>" placeholder="Name" hidden><button class="add-watchlist-button"
+                                     data-id="<%= movie.movies[0].trackName %>">+Add watchlist </button>
+                    <select id="watchListIds" class = 'selectAddMovietoList'>
+                                <%for(var i = 0; i != watchlist.responseJSON.length; i++) { %>
+                                <option value="<%= watchlist.responseJSON[i].id %>"> <%= watchlist.responseJSON[i].name %> </option>
+                                <% ; }; %>
+                    </select>
+                    <div id = "message"></div>
+
+
 
 
                     <a class="itunesLogoContainer"
@@ -31,12 +38,14 @@
                                             src='<%= movie.urlTrailerMovie %>'></iframe>
                                     <br/><a href='<%= movie.urlTrailerMovie %>'
                                             target='_blank'><%= movie.movies[0].trackName %></a>
-                                </div>
+                                </div>document
                             </div>
 
                     </div>
                     <!-- fin container_preview> -->
                 </div>
+
+
             </div>
         </div>
 

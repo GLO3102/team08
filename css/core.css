@@ -10,7 +10,7 @@ body {
     }
 }
 
-.itunesLogo , .add-watchlist-button{
+.itunesLogo , .add-watchlist-button, .selectAddMovietoList{
     height: 40px;
 }
 
@@ -24,6 +24,15 @@ body {
     border-radius: 10px;
     font-size:0.5em;
     margin-left:15%;
+}
+
+.selectAddMovietoList{
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    font-size:0.5em;
+    background-color:white;
+
 }
 
 #wrapper {
@@ -84,11 +93,15 @@ body {
     float: left;
 }
 
-.top-nav>li>a {
+.top-nav>li>a , #message {
     padding-top: 15px;
     padding-bottom: 15px;
     line-height: 20px;
     color: #999;
+}
+
+#message{
+    font-size:0.7em;
 }
 
 .top-nav>li>a:hover,

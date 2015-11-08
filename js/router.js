@@ -19,7 +19,6 @@ define([
             'serie/:name' : 'searchSerieName',
             'serie/:name/:season' : 'searchSerieSeason',
             'serie/:name/:season/:episode' : 'searchSerieEpisode',
-            'watchlist/:id/movies' : 'addMovieToWatchlist',
             '*actions': 'defaultAction'
 
         }
@@ -36,16 +35,7 @@ define([
             var watchlistView = new WatchlistView();
         });
 
-        app_router.on('route:addMovieToWatchlist',function(){
 
-            var menuView = new MenuView();
-            menuView.render();
-
-            var watchlistView = new WatchlistView(name);
-            watchlistView.render(name);
-
-
-        });
 
         app_router.on('route:searchActor', function () {
             var menuView = new MenuView();

@@ -10,9 +10,7 @@ define([
         model: MovieModel,
         initialize:function(request){
             this.request = request;
-            console.log(request);
-
-        },
+            },
         sync:function(method, collection, options){
             var self = this;
             var params = _.extend({

@@ -6,6 +6,17 @@ define([
     '../../backbone'
 ], function(_, Backbone){
     var MovieMainModel = Backbone.Model.extend({
+
+        addMovie: function(postData) {
+            var movies = this.get("movies");
+            movies.push(postData);
+            this.set("movies", movies);
+            $.ajax({
+                url: 'http://' + urlServer + ':3000/unsecure/watchlists/' + this.get("id") + '/movies',
+                type: 'POST',
+                data: postData
+            });
+        },
     });
 
     return MovieMainModel;
