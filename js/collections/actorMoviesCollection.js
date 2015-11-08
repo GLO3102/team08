@@ -14,7 +14,7 @@ define([
         sync:function(method, collection, options){
             var self = this;
             var params = _.extend({
-                url: 'http://'+urlServer+':3000/unsecure/actors/'+self.request+'/movies',
+                url: urlServer + '/unsecure/actors/'+self.request+'/movies',
                 dataType: "json",
                 contentType: "application/x-www-form-urlencoded"
             }, options);
