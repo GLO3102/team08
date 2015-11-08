@@ -46,22 +46,27 @@ define([
         addMovieToWatchList : function(event) {
             var currentElement = $(event.currentTarget).data('id');
             var movie = this.model.movies[0] ;
+            var watchListId = undefined;
 
             var selectElement = document.getElementById("watchListIds");
-            var watchListId = selectElement.options[ selectElement.selectedIndex ].value;
+            var selectedOption = selectElement.options[ selectElement.selectedIndex ];
+            if (selectedOption !== undefined) {
+                watchListId = selectedOption.value;
+            }
+
             console.log(movie);
-            $.ajax({
-                type: "POST",
-                url: urlServer + '/unsecure/watchlists/' + watchListId + '/movies',
-                data: movie,
-                success: function(){
-                    $('#message').html(currentElement + ' was added to watchlist');
-                }
-            });
-
-            },
-
-            });
+            if (watchListId !== undefined) {
+                $.ajax({
+                    type: "POST",
+                    url: urlServer + '/unsecure/watchlists/' + watchListId + '/movies',
+                    data: movie,
+                    success: function () {
+                        $('#message').html(currentElement + ' was added to watchlist');
+                    }
+                });
+            }
+        },
+    });
 
 
     return MovieMain;
