@@ -9,7 +9,7 @@ define([
             movies: []
         },
         idAttribute: "id",
-        urlRoot: 'http://' + urlServer + ':3000/unsecure/watchlists',
+        urlRoot: urlServer + '/unsecure/watchlists',
 
         save: function() {
             $.post(this.urlRoot, this.toJSON())
@@ -30,7 +30,7 @@ define([
             movies.push(postData);
             this.set("movies", movies);
             $.ajax({
-                url: 'http://' + urlServer + ':3000/unsecure/watchlists/' + this.get("id") + '/movies',
+                url: this.urlRoot + '/' + this.get("id") + '/movies',
                 type: 'POST',
                 data: postData
             });

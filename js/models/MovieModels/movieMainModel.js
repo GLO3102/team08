@@ -12,7 +12,7 @@ define([
             movies.push(postData);
             this.set("movies", movies);
             $.ajax({
-                url: 'http://' + urlServer + ':3000/unsecure/watchlists/' + this.get("id") + '/movies',
+                url: urlServer + '/unsecure/watchlists/' + this.get("id") + '/movies',
                 type: 'POST',
                 data: postData
             });

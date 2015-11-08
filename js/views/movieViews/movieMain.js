@@ -19,7 +19,7 @@ define([
         el: $('#Page_Container'),
 
         list :$.ajax({
-                url:  'http://'+urlServer+':3000/unsecure/watchlists',
+                url:  urlServer + '/unsecure/watchlists',
                 type: 'GET',
                 contentType: "application/JSON; charset=utf-8"
             }),
@@ -52,10 +52,10 @@ define([
             console.log(movie);
             $.ajax({
                 type: "POST",
-                url: 'http://' + urlServer + ':3000/unsecure/watchlists/' + watchListId + '/movies',
+                url: urlServer + '/unsecure/watchlists/' + watchListId + '/movies',
                 data: movie,
                 success: function(){
-                    $('#message').html(currentElement + ' a bien été ajouté à la watchlist');
+                    $('#message').html(currentElement + ' was added to watchlist');
                 }
             });
 

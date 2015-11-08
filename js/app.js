@@ -1,4 +1,4 @@
-urlServer = "192.168.0.101";
+urlServer = "http://localhost:3000";
 
 define([
     'jquery',

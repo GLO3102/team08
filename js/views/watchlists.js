@@ -103,7 +103,7 @@ define([
             }
             if (query !== undefined) {
                 $.ajax({
-                    url: 'http://' + urlServer + ':3000/unsecure/search/movies?q=' + encodeURIComponent(query),
+                    url: urlServer + '/unsecure/search/movies?q=' + encodeURIComponent(query),
                     type: 'GET',
                     success: this.searchMovieSuccess
                 });
@@ -122,8 +122,7 @@ define([
                 "trackId": currentElement.data('id'),
                 "trackName": currentElement.data('name'),
                 "releaseDate": currentElement.data('date'),
-                "artworkUrl100": currentElement.data('image'),
-                "artworkUrl300": currentElement.data('image').replace('100x100bb','300x300bb')
+                "artworkUrl100": currentElement.data('image')
             };
 
             var selectElement = document.getElementById("watchListIds");
