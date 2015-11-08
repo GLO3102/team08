@@ -37,7 +37,7 @@ define([
         },
 
         isValidName : function(name) {
-            return true;
+            return name !== undefined && name !== '';
         },
 
         addWatchList: function () {

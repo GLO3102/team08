@@ -14,7 +14,7 @@ define([
         sync:function(method, collection, options){
             var self = this;
             var params = _.extend({
-                url: 'http://'+urlServer+':3000/unsecure/tvshows/season/'+self.id+"/episodes",
+                url: urlServer + '/unsecure/tvshows/season/'+self.id+"/episodes",
                 dataType: "json",
                 contentType: "application/x-www-form-urlencoded"
             }, options);
