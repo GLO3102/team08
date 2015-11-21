@@ -1,0 +1,19 @@
+#userNameWarning {
+    display: none
+}
+
+#passwordWarning {
+    display: none
+}
+
+#emailWarning {
+    display: none
+}
+
+#errorWarning {
+    display: none
+}
+
+.warning {
+    color: red;
+}

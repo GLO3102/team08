@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UMovie - Sign Up</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Base64/0.3.0/base64.js"></script>
+    <script src="js/GlobalVars.js"></script>
+    <script src="js/SignUp.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/SignUp.css">
+</head>
+<body>
+    <div>
+        <label for="emailInputBox">Email: </label>
+        <input id="emailInputBox" type="email"> <span class="warning" id="emailWarning">Enter a valid email!</span>
+    </div>
+    <div>
+        <label for="usernameInputBox">UserName: </label>
+        <input id="usernameInputBox" > <span class="warning" id="userNameWarning">Input your name!</span>
+    </div>
+    <div>
+        <label for="passwordInputBox">Password: </label>
+        <input id="passwordInputBox" type="password"> <span class="warning" id="passwordWarning">Input your password!</span>
+    </div>
+    <button id="okButton">Sign Up</button>
+    <span id="errorWarning" class="warning">Username and/or password is wrong</span>
+</body>
+</html>
