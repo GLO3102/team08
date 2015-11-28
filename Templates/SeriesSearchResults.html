@@ -1,0 +1,27 @@
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Series</h3>
+        </div>
+        <div class="panel-body">
+            <% _.each(movies, function(movie) { %>
+            <div class="col-lg-2">
+                <div class="container-FilmographySnippet">
+                    <a href="index.html#/movie/<%= movie.trackName %>">
+                        <div class=" FilmographySnippet">
+                            <img src="<%= movie.artworkUrl100 %>"/>
+
+                            <div>
+                                <%= movie.trackName %>
+                            </div>
+                            <div>
+                                <%= (new Date(movie.releaseDate)).toDateString() %>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
