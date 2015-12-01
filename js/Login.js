@@ -12,6 +12,10 @@ $(document).ready(function() {
         }
     });
 
+    $("#signupButton").click(function(){
+        window.location.href = './SignUp.html';
+    });
+
     var login = function(email, password){
         var postData = 'email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password);
 
