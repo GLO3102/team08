@@ -1,0 +1,16 @@
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Actors</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <% _.each(actors, function(actor) { %>
+                <li>
+                    <a href="index.html#/actors/<%= actor.artistName %>"><%= actor.artistName %></a>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+</div>
