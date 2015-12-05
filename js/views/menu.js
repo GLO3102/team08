@@ -2,20 +2,19 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'models/menuModel',
     'text!../../Templates/Menu.html'
-], function($, _, Backbone, MenuModel, menuTemplate){
+], function($, _, Backbone, menuTemplate){
     var MenuView = Backbone.View.extend({
         el: $('#Menu_Element'),
 
-        initialize: function() {
-            this.render();
+
+        initialize: function(userProfile) {
+            this.render(userProfile);
         },
 
-        render: function() {
-            this.model = new MenuModel({ name: "John Smith"});
+        render: function(userProfile) {
             var compiledTemplate = _.template(menuTemplate);
-            this.$el.html( compiledTemplate(this.model.toJSON()) );
+            this.$el.html( compiledTemplate({user: userProfile}) );
         }
     });
 

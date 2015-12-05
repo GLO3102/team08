@@ -10,6 +10,11 @@ body {
     }
 }
 
+.profilePic {
+    height: 25px;
+    width: 25px;
+}
+
 .itunesLogo , .add-watchlist-button, .selectAddMovietoList{
     height: 40px;
 }
