@@ -63,7 +63,7 @@ define([
                                   '<p>Season name : ' + episodeSaisonName + '</p>' +
                                   '<p>Episode name :' + episodeName + '</p>' +
 
-                                  '<div class="blogvision">' +
+
                                   ' <iframe id="preview-frame" src=" '+ episodePreview +' "></iframe></div>'+
                                   '<p>Description : ' + episodeDesc + '</p>' +
                                   '<p>Time :  ' +episodeTrackTimeMillis + '</p>');
