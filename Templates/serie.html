@@ -1,3 +1,4 @@
+
 <div id="page-wrapper">
 
     <div class="container-fluid">
@@ -51,21 +52,37 @@
 
                                 <div class="panel-heading">Episodes</div>
                                 <div class="panel-body showTv_list">
+
                                     <div class="table-responsive ">
                                         <table class="table">
                                             <tbody>
                                             <% for(var i = 0;i !== serie.episodes.length;i++){ %>
-                                                <tr><td><a href="/projetSession/index.html#serie/<%= serie.seasons[0].artistName %>/<%= serie.noSeason %>/<%= i %>"><%= serie.episodes[i].trackName %></a></td></tr>
+                                                <tr><td><div id = "noModal">
+                                                       <div id = 'linkModal'
+                                                       data-id=         '<%= serie.episodes[i].trackId %>'
+                                                       data-saisonName= '<%= serie.episodes[i].artistName %>'
+                                                       data-nameEpisode='<%= serie.episodes[i].trackName %>'
+                                                       data-img =       "<%= serie.episodes[i].artwork60 %>"
+                                                       data-preview =   "<%= serie.episodes[i].urlTrailer%>"
+                                                       data-desc =      "<%= serie.episodes[i].shortDescription %>"
+                                                       data-time =      "<%= serie.episodes[i].trackTimeMillis / (60000) %>"
+                                                       ><%= serie.episodes[i].trackName %></div></div></td></tr>
+                                            <div id = "panelModal" class = 'popModal'>
+
+
+                                            </div>
                                             <%} %>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+
                             </div>
                             <!--- showTv_otherSeason-->
                         </div>
                     </div>
                         <!-- fin container_preview> -->
+
                 </div>
             </div>
         </div>

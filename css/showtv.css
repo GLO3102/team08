@@ -1,16 +1,34 @@
-.preview-panel {
-    display: block;
-    height: 400px;
+
+#noModal{
+    display:none;
+    background: black;
+    position:absolute;
+    top:40px;
+    left:20px;
+    right:20px;
+    bottom:20px;
+    width:500px;
+    height:300px;
+    border-radius: 10px;
+    z-index: 9000 !important;
 }
 
-.showTVCover {
-    width: 100%;
+.popModal{
+    display:none;
+    right:150px;
+    bottom:150px;
+    z-index: 9999 !important;
+    width: 80%;
+    height: 70%;
+    position:fixed;
+    border-bottom-right-radius: 5px;
+    background-color: white;
 }
 
-.itunesLogo {
-    height: 40px;
+#panelModal{
+    border-style : outset groove solid;
+    border-color:#808080;
+
 }
 
-.itunesLogoContainer {
-    float: right;
-}
+
