@@ -103,9 +103,12 @@ define([
             }
             if (query !== undefined) {
                 $.ajax({
-                    url: urlServer + '/unsecure/search/movies?q=' + encodeURIComponent(query),
+                    url: urlServer + '/search/movies?q=' + encodeURIComponent(query),
                     type: 'GET',
-                    success: this.searchMovieSuccess
+                    success: this.searchMovieSuccess,
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader('Authorization', getCookie());
+                    }
                 });
             }
         },

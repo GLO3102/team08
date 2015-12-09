@@ -14,9 +14,12 @@ define([
         sync:function(method, collection, options){
             var self = this;
             var params = _.extend({
-                url: urlServer + '/unsecure/tvshows/season/'+self.id+"/episodes",
+                url: urlServer + '/tvshows/season/'+self.id+"/episodes",
                 dataType: "json",
-                contentType: "application/x-www-form-urlencoded"
+                contentType: "application/x-www-form-urlencoded",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', getCookie());
+                }
             }, options);
 
             return $.ajax(params);

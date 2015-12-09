@@ -10,11 +10,15 @@ define([
           this.request = request;
         },
         sync:function(method, collection, options){
+            var token = getCookie();
             var self = this;
             var params = _.extend({
-                url: urlServer + "/unsecure/search/actors?q="+self.request,
+                url: urlServer + "/search/actors?q="+self.request,
                 dataType: "json",
-                contentType: "application/x-www-form-urlencoded"
+                contentType: "application/x-www-form-urlencoded",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', token);
+                }
             }, options);
 
             return $.ajax(params);

@@ -19,9 +19,12 @@ define([
         el: $('#Page_Container'),
 
         list :$.ajax({
-                url:  urlServer + '/unsecure/watchlists',
+                url:  urlServer + '/watchlists',
                 type: 'GET',
-                contentType: "application/JSON; charset=utf-8"
+                contentType: "application/JSON; charset=utf-8",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', getCookie());
+                }
             }),
 
         initialize: function() {
@@ -58,10 +61,13 @@ define([
             if (watchListId !== undefined) {
                 $.ajax({
                     type: "POST",
-                    url: urlServer + '/unsecure/watchlists/' + watchListId + '/movies',
+                    url: urlServer + '/watchlists/' + watchListId + '/movies',
                     data: movie,
                     success: function () {
                         $('#message').html(currentElement + ' was added to watchlist');
+                    },
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader('Authorization', getCookie());
                     }
                 });
             }

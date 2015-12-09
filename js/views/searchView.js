@@ -34,12 +34,11 @@ define([
             var query = this.getSearchBoxContent();
 
             var query = encodeURIComponent(query);
-            var token = this.getCookie('umovie_access_token');
             this.Reset();
-            this.searchMovies(query, token);
-            this.searchSeries(query, token);
-            this.searchActors(query, token);
-            this.searchUsers(query, token);
+            this.searchMovies(query, getCookie());
+            this.searchSeries(query, getCookie());
+            this.searchActors(query, getCookie());
+            this.searchUsers(query, getCookie());
         },
 
         Reset: function() {
@@ -60,7 +59,7 @@ define([
 
         searchSeries: function(query, token) {
             if (this.canQuery("SeriesCheckBox")) {
-                this.launchquery(ServerUrl + '/search/tvshows/episodes?limit=5&q=' + query,
+                this.launchquery(ServerUrl + '/search/tvshows/seasons?limit=5&q=' + query,
                                 token,
                                 this.displaySeries,
                                 this.failureSeries);
@@ -125,6 +124,7 @@ define([
                 document.getElementById('SeriesResultsPlaceholder').innerHTML = template({ data : "Series" });
             } else {
                 var compiledTemplate = _.template(SeriesTemplate);
+                console.log(data.results);
                 $('#SeriesResultsPlaceholder').html(compiledTemplate({series: data.results}));
             }
         },
@@ -183,17 +183,6 @@ define([
             if(status.statusCode >=500 || status.statusCode <= 520)
                 message= "Erreur serveur";
             $('#UsersResultsPlaceholder').html(compiledTemplate({errorMessage: message}));
-        },
-
-        getCookie: function(cname) {
-            var name = cname + "=";
-            var ca = document.cookie.split(';');
-            for(var i=0; i<ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1);
-                if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-            }
-            return "";
         }
     });
 

@@ -7,12 +7,12 @@
             <% _.each(series, function(serie) { %>
             <div class="col-lg-2">
                 <div class="container-FilmographySnippet">
-                    <a href="index.html#/serie/<%= serie.trackName %>">
+                    <a href="index.html#serie/<%= serie.artistName %>">
                         <div class=" FilmographySnippet">
                             <img src="<%= serie.artworkUrl100 %>"/>
 
                             <div>
-                                <%= serie.trackName %>
+                                <%= serie.collectionName %>
                             </div>
                             <div>
                                 <%= (new Date(serie.releaseDate)).toDateString() %>

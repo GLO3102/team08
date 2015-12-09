@@ -4,7 +4,8 @@
 define([
     'underscore',
     'backbone',
-    '../models/MovieModels/movieModel'
+    '../models/MovieModels/movieModel',
+    'helper'
 ], function(_, Backbone, MovieModel){
     var movieCollection = Backbone.Collection.extend({
         model: MovieModel,
@@ -12,11 +13,15 @@ define([
             this.request = request;
             },
         sync:function(method, collection, options){
+            var token = getCookie();
             var self = this;
             var params = _.extend({
-                url: urlServer + '/unsecure/search/movies?q=' + self.request,
+                url: urlServer + '/search/movies?q=' + self.request,
                 dataType: "json",
-                contentType: "application/x-www-form-urlencoded"
+                contentType: "application/x-www-form-urlencoded",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', token);
+                }
             }, options);
 
             return $.ajax(params);

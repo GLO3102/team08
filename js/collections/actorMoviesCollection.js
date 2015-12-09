@@ -12,11 +12,15 @@ define([
             this.request = request;
         },
         sync:function(method, collection, options){
+            var token = getCookie();
             var self = this;
             var params = _.extend({
-                url: urlServer + '/unsecure/actors/'+self.request+'/movies',
+                url: urlServer + '/actors/'+self.request+'/movies',
                 dataType: "json",
-                contentType: "application/x-www-form-urlencoded"
+                contentType: "application/x-www-form-urlencoded",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', token);
+                }
             }, options);
 
             return $.ajax(params);
