@@ -13,6 +13,7 @@ define([
         routes: {
             // Default
             'search/': 'searchPage',
+            'search': 'searchPage',
             'actor/' : 'searchActor',
             'actor/:name' : 'searchActorName',
             'movie/' : 'searchMovie',

@@ -160,3 +160,7 @@ li.message-preview {
 .side-nav>li>ul>li>a:hover {
     color: #fff;
 }
+
+.twitter-typeahead .tt-menu {
+    background-color: white;
+}

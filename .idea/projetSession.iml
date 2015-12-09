@@ -6,5 +6,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="md5" level="application" />
     <orderEntry type="library" name="core" level="application" />
+    <orderEntry type="library" name="typeahead.bundle" level="application" />
   </component>
 </module>
