@@ -21,12 +21,13 @@ define([
 
         events: {
             'click #menuSearchButton' : 'searchPageRedirect',
-            'click .dropdown-menu li a' : 'LogOut'
+            'click .fa-power-off ' : 'LogOut'
         },
 
-        LogOut: function () {
-            var selectMenu = $(this).text(); //retourne une chaine vide
-            if(selectMenu ==="Log Out"){
+        LogOut: function (event) {
+            var selectMenu = $(event.currentTarget).data('toggle'); //retourne une chaine vide
+            console.log(selectMenu);
+            if(selectMenu =="Log Out"){
                 window.location.href = './Login.html';
             }
 
