@@ -2,15 +2,15 @@
 #noModal{
     display:none;
     background: black;
-    position:absolute;
+    position:fixed;
     top:40px;
     left:20px;
     right:20px;
     bottom:20px;
-    width:500px;
-    height:300px;
+    width:90%;
+    height:90%;
     border-radius: 10px;
-    z-index: 9000 !important;
+    z-index: 9999 !important;
 }
 
 .popModal{

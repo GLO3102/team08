@@ -57,7 +57,7 @@ define([
             console.log(episodeTrackTimeMillis);
 
             $('#noModal').fadeIn(500);
-            $('#popModal').fadeTo("slow",0.8);
+            $('#noModal').fadeTo("slow",0.8);
             $('#panelModal').fadeIn(1000);
             $('#panelModal').html('<img src = " '+ episodeImg +'"/>' +
                                   '<p>Season name : ' + episodeSaisonName + '</p>' +
@@ -84,9 +84,9 @@ define([
         return "";
     },
         closeModal: function(event){
-           // $('#noModal').hide();
+            $('#noModal').hide();
             $('.popModal').hide();
-            $('.panelModal').html('');
+            $('.popModal').html('');
         }
     });
 
