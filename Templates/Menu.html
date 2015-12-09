@@ -1,15 +1,14 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
+        <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">-->
+            <!--<span class="sr-only">Toggle navigation</span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+        <!--</button>-->
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="profilePic" src="<%= user.profileImage %>" > <%= user.name %> <b
-                    class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="profilePic" src="<%= user.profileImage %>" >&nbsp&nbsp<%= user.email %> <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li>
                     <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
@@ -26,9 +25,9 @@
         <ul class="nav navbar-nav side-nav">
             <li class="sidebar-search">
                 <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="Search...">
+                    <input id="menuSearchBar" type="text" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
+                            <button id="menuSearchButton" class="btn btn-default" type="button">
                                 <i class="fa fa-search"></i>
                             </button>
                         </span>
