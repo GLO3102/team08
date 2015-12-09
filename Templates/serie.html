@@ -1,3 +1,5 @@
+
+
 <div id="page-wrapper">
 
     <div class="container-fluid">
@@ -22,6 +24,10 @@
                     <div class="panel-body">
 
                         <div class="container_preview">
+                            <div id = "noModal"><div id = "panelModal" class = 'popModal'>
+
+
+                            </div></div>
                             <div class="season_list col-lg-3 panel panel-default">
                                 <div class="panel-heading">Seasons</div>
                                 <div class="panel-body showTv_list">
@@ -52,8 +58,9 @@
                                 <div class="panel-heading">Episodes</div>
                                 <div class="panel-body showTv_list">
                                     <div class="table-responsive ">
+
                                         <table class="table">
-                                            <tbody><div id = "noModal"></div>
+                                            <tbody>
                                             <% for(var i = 0;i !== serie.episodes.length;i++){ %>
                                                 <tr><td>
                                                        <div id = 'linkModal'
@@ -66,13 +73,11 @@
                                                        data-time =      "<%= serie.episodes[i].trackTimeMillis / (60000) %>"
                                                        ><%= serie.episodes[i].trackName %></div></td></tr>
 
-                                            <div id = "panelModal" class = 'popModal'>
 
-
-                                                </div>
                                             <%} %>
                                             </tbody>
                                         </table>
+
                                     </div>
                                 </div>
                             </div>

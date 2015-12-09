@@ -2,33 +2,31 @@
 #noModal{
     display:none;
     background: black;
-    position:fixed;
-    top:40px;
-    left:20px;
-    right:20px;
-    bottom:20px;
-    width:90%;
+    position:absolute;
+    margin : 0;
+    width:95%;
     height:90%;
     border-radius: 10px;
-    z-index: 9999 !important;
+    z-index: 9000 !important;
 }
 
 .popModal{
     display:none;
-    right:150px;
-    bottom:150px;
+    margin-left : auto;
+    margin-right : auto;
     z-index: 9999 !important;
-    width: 80%;
-    height: 70%;
-    position:fixed;
-    border-bottom-right-radius: 5px;
+
+   /* position:fixed;*/
+
     background-color: white;
 }
 
 #panelModal{
     border-style : outset groove solid;
     border-color:#808080;
-
+    border-bottom-right-radius: 5px;
+    width: 80%;
+    height: 100%;
 }
 
 
