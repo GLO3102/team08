@@ -20,9 +20,17 @@ define([
         },
 
         events: {
-            'click #menuSearchButton' : 'searchPageRedirect'
+            'click #menuSearchButton' : 'searchPageRedirect',
+            'click .dropdown-menu li a' : 'LogOut'
         },
 
+        LogOut: function () {
+            var selectMenu = $(this).text(); //retourne une chaine vide
+            if(selectMenu ==="Log Out"){
+                window.location.href = './Login.html';
+            }
+
+        },
         searchPageRedirect : function() {
             var query = this.getEncodedQuery();
 

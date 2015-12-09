@@ -33,6 +33,12 @@ $(document).ready(function() {
 
     var SignUpFailure = function(data, status){
         document.getElementById("errorWarning").style.display="inline-block";
+        var message;
+        if(status.statusCode >=400 || status.statusCode <= 499)
+        message= "Erreur client";
+        if(status.statusCode >=500 || status.statusCode <= 520)
+            message= "Erreur serveur";
+        document.getElementById("errorWarningMessage").style.display="inline-block".textContent=message;
     };
 
     var ResetWarnings = function() {

@@ -150,19 +150,39 @@ define([
         },
 
         failureMovies: function(data, status) {
-
+            var message;
+            if(status.statusCode >=400 || status.statusCode <= 499)
+                message= "Erreur client";
+            if(status.statusCode >=500 || status.statusCode <= 520)
+                message= "Erreur serveur";
+            $('#MoviesResultsPlaceholder').html(compiledTemplate({errorMessage: message}));
         },
 
         failureSeries: function(data, status) {
-
+            var message;
+            if(status.statusCode >=400 || status.statusCode <= 499)
+                message= "Erreur client";
+            if(status.statusCode >=500 || status.statusCode <= 520)
+                message= "Erreur serveur";
+            $('#SeriesResultsPlaceholder').html(compiledTemplate({errorMessage: message}));
         },
 
         failureActors: function(data, status) {
-
+            var message;
+            if(status.statusCode >=400 || status.statusCode <= 499)
+                message= "Erreur client";
+            if(status.statusCode >=500 || status.statusCode <= 520)
+                message= "Erreur serveur";
+            $('#ActorsResultsPlaceholder').html(compiledTemplate({errorMessage: message}));
         },
 
         failureUsers: function(data, status) {
-
+            var message;
+            if(status.statusCode >=400 || status.statusCode <= 499)
+                message= "Erreur client";
+            if(status.statusCode >=500 || status.statusCode <= 520)
+                message= "Erreur serveur";
+            $('#UsersResultsPlaceholder').html(compiledTemplate({errorMessage: message}));
         },
 
         getCookie: function(cname) {

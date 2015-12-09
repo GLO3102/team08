@@ -16,6 +16,8 @@ $(document).ready(function() {
         window.location.href = './SignUp.html';
     });
 
+
+
     var login = function(email, password){
         var postData = 'email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password);
 
@@ -36,6 +38,7 @@ $(document).ready(function() {
 
     var authorizeFailure = function(data, status){
         document.getElementById("errorWarning").style.display="inline-block";
+        document.getElementById("errorWarningMessage").style.display="inline-block".textContent=status.message;
     };
 
     var ResetWarnings = function() {
