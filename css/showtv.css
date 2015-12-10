@@ -1,7 +1,7 @@
 
 #noModal{
     display:none;
-    background: black;
+    background: #222;
     position:absolute;
     margin : 0;
     width:95%;
@@ -12,6 +12,7 @@
 
 .popModal{
     display:none;
+
     margin-left : auto;
     margin-right : auto;
     z-index: 9999 !important;

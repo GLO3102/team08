@@ -24,10 +24,23 @@
                     <div class="panel-body">
 
                         <div class="container_preview">
-                            <div id = "noModal"><div id = "panelModal" class = 'popModal'>
+                            <div id = "noModal">
+                                <div id = "panelModal" class = 'popModal'>
+                                    <div class=" panel panel-default">
+                                        <div class="panel-heading">ShowTv : <%= serie.artistName %></div>
+                                        <div class="panel-body">
+                                            <div class="table-responsive ">
+                                                <table class="table">
+                                                    <tbody>
+                                                    coucou
+                                                    </tbody>
+                                                </table>
+                                             </div>
+                                          </div>
+                                        </div>
 
-
-                            </div></div>
+                                </div>
+                            </div>
                             <div class="season_list col-lg-3 panel panel-default">
                                 <div class="panel-heading">Seasons</div>
                                 <div class="panel-body showTv_list">
@@ -49,7 +62,7 @@
                                 <div class='blogvision'>
                                     <iframe id="preview-frame"
                                             src='<%= serie.urlTrailer %>'></iframe>
-                                    <br/><a href='<%= serie.seasons[serie.noSeason].collectionViewUrl %>'
+                                             <br/><a href='<%= serie.seasons[serie.noSeason].collectionViewUrl %>'
                                             target='_blank'><%= serie.seasons[0].artistName %></a>
                                 </div>
                             </div>
@@ -64,16 +77,15 @@
                                             <% for(var i = 0;i !== serie.episodes.length;i++){ %>
                                                 <tr><td>
                                                        <div id = 'linkModal'
-                                                       data-id=         '<%= serie.episodes[i].trackId %>'
+                                                       data-noEpisode = '<%= i %>'
+                                                       data-noSaison=         '<%= serie.noSeason %>'
                                                        data-saisonName= '<%= serie.episodes[i].artistName %>'
                                                        data-nameEpisode='<%= serie.episodes[i].trackName %>'
                                                        data-img =       "<%= serie.episodes[i].artwork60 %>"
                                                        data-preview =   "<%= serie.urlTrailer %>"
                                                        data-desc =      "<%= serie.episodes[i].shortDescription %>"
                                                        data-time =      "<%= serie.episodes[i].trackTimeMillis / (60000) %>"
-                                                       ><%= serie.episodes[i].trackName %></div></td></tr>
-
-
+                                                       ><a class ='search' href = "projetSession/index.html#serie/<%= serie.seasons[0].artistName %>/<%= serie.noSeason %>/<%= i %>"><%= serie.episodes[i].trackName %></a></div></td></tr>
                                             <%} %>
                                             </tbody>
                                         </table>

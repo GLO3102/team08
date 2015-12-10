@@ -25,8 +25,7 @@ define([
         },
 
         LogOut: function (event) {
-            var selectMenu = $(event.currentTarget).data('toggle'); //retourne une chaine vide
-            console.log(selectMenu);
+            var selectMenu = $(event.currentTarget).data('toggle');
             if(selectMenu =="Log Out"){
                 window.location.href = './Login.html';
             }

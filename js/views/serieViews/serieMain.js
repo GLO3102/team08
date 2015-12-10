@@ -37,15 +37,15 @@ define([
         },
 
         openModal:function(event){
-            console.log(event.currentTarget.dataset.nameepisode);
             event.preventDefault();
             var episodeId = $(event.currentTarget).data('id');
-            var episodeSaisonName = $(event.currentTarget).data('saisonname');
-            var episodeName  = $(event.currentTarget).data('nameepisode');
+            var episodeSaisonName = $(event.currentTarget).data('saisonName');
+            var episodeName  = $(event.currentTarget).data('nameEpisode');
             var episodeImg  = $(event.currentTarget).data('img');
             var episodePreview  = $(event.currentTarget).data('preview');
             var episodeDesc  = $(event.currentTarget).data('desc');
             var episodeTrackTimeMillis  = $(event.currentTarget).data('time');
+            var token = this.getCookie('umovie_access_token');// besoin pour get via ajax
 
 
             console.log(episodeId);
@@ -72,6 +72,17 @@ define([
 
 
         },
+
+        getCookie: function(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1);
+            if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+        }
+        return "";
+    },
         closeModal: function(event){
             $('#noModal').hide();
             $('.popModal').hide();
