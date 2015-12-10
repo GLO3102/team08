@@ -22,10 +22,10 @@ define([
         events: {
             'click #menuSearchButton' : 'searchPageRedirect',
             'click .fa-power-off ' : 'LogOut'
-        },
 
+        },
         LogOut: function (event) {
-            var selectMenu = $(event.currentTarget).data('toggle'); //retourne une chaine vide
+            var selectMenu = $(event.currentTarget).data('toggle');
             console.log(selectMenu);
             if(selectMenu =="Log Out"){
                 window.location.href = './Login.html';
