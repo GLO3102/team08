@@ -61,7 +61,7 @@ define([
 
         onUserType: function(query, processAsync) {
             var query = this.getEncodedQuery();
-            var token = this.getCookie('umovie_access_token');
+            var token = getCookie();
 
             if (!(query === "" || query === undefined)) {
                 this.launchquery(ServerUrl + '/search?q=' + query,

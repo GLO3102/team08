@@ -111,7 +111,7 @@ define([
         displayMovies: function(data, status) {
             if (data.resultCount === 0) {
                 var template = _.template(NoResultsTemplate);
-                document.getElementById('MoviesResultsPlaceholder').innerHTML = template({ data : "Movies" });
+                document.getElementById('MoviesResultsPlaceholder').innerHTML = template({ data : "Movies", errorMessage: "No Results" });
             } else {
                 var compiledTemplate = _.template(MoviesTemplate);
                 $('#MoviesResultsPlaceholder').html(compiledTemplate({movies: data.results}));
@@ -121,7 +121,7 @@ define([
         displaySeries: function(data, status) {
             if (data.resultCount === 0) {
                 var template = _.template(NoResultsTemplate);
-                document.getElementById('SeriesResultsPlaceholder').innerHTML = template({ data : "Series" });
+                document.getElementById('SeriesResultsPlaceholder').innerHTML = template({ data : "Series", errorMessage: "No Results" });
             } else {
                 var compiledTemplate = _.template(SeriesTemplate);
                 console.log(data.results);
@@ -132,7 +132,7 @@ define([
         displayActors: function(data, status) {
             if (data.resultCount === 0) {
                 var template = _.template(NoResultsTemplate);
-                document.getElementById('ActorsResultsPlaceholder').innerHTML = template({ data : "Actors" });
+                document.getElementById('ActorsResultsPlaceholder').innerHTML = template({ data : "Actors", errorMessage: "No Results" });
             } else {
                 var compiledTemplate = _.template(ActorsTemplate);
                 $('#ActorsResultsPlaceholder').html(compiledTemplate({actors: data.results}));
@@ -140,12 +140,12 @@ define([
         },
 
         displayUsers: function(data, status) {
-            if (data.resultCount === 0) {
+            if (data.length === 0) {
                 var template = _.template(NoResultsTemplate);
-                document.getElementById('UsersResultsPlaceholder').innerHTML = template({ data : "Users" });
+                document.getElementById('UsersResultsPlaceholder').innerHTML = template({ data : "Users", errorMessage: "No Results" });
             } else {
                 var compiledTemplate = _.template(UsersTemplate);
-                $('#UsersResultsPlaceholder').html(compiledTemplate({users: data.results}));
+                $('#UsersResultsPlaceholder').html(compiledTemplate({users: data}));
             }
         },
 
