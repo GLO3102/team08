@@ -7,8 +7,9 @@ define([
     'text!../../Templates/SeriesSearchResults.html',
     'text!../../Templates/ActorsSearchResults.html',
     'text!../../Templates/UsersSearchResults.html',
-    'text!../../Templates/NoResults.html'
-], function($, _, Backbone, searchTemplate, MoviesTemplate, SeriesTemplate, ActorsTemplate, UsersTemplate, NoResultsTemplate){
+    'text!../../Templates/NoResults.html',
+    'text!../../Templates/DropdownTemplate.html'
+], function($, _, Backbone, searchTemplate, MoviesTemplate, SeriesTemplate, ActorsTemplate, UsersTemplate, NoResultsTemplate, DropDownTemplate){
     var SearchView = Backbone.View.extend({
         el: $('#Page_Container'),
 
@@ -19,10 +20,23 @@ define([
         render: function() {
             var compiledTemplate = _.template(searchTemplate);
             this.$el.html( compiledTemplate({}) );
+
+            this.initializeGenreLists();
         },
 
         events: {
             'click #searchbutton' : 'search'
+        },
+
+        initializeGenreLists: function() {
+            this.launchquery(ServerUrl + '/genres/movies',
+                             getCookie(),
+                             this.displayMovieGenres,
+                             this.failureGenres);
+            this.launchquery(ServerUrl + '/genres/tvshows',
+                             getCookie(),
+                             this.displaySerieGenres,
+                             this.failureGenres);
         },
 
         getSearchBoxContent: function() {
@@ -49,15 +63,32 @@ define([
         },
 
         searchMovies: function(query, token) {
+            var query = ServerUrl + '/search/movies?limit=5&q=' + query;
+            var movieGenresDropdown = document.getElementById("MoviesGenres").firstChild;
+            if (movieGenresDropdown !== undefined) {
+                var selectedId = movieGenresDropdown.options[movieGenresDropdown.selectedIndex].value;
+                if (selectedId !== "all" && selectedId !== undefined && selectedId !== '') {
+                    query += '&genre=' + selectedId;
+                }
+            }
+
             if (this.canQuery("MoviesCheckBox")) {
-                this.launchquery(ServerUrl + '/search/movies?limit=5&q=' + query,
-                                token,
-                                this.displayMovies,
-                                this.failureMovies);
+                this.launchquery(query,
+                                 token,
+                                 this.displayMovies,
+                                 this.failureMovies);
             }
         },
 
         searchSeries: function(query, token) {
+            var query = ServerUrl + '/search/movies?limit=5&q=' + query;
+            var serieGenresDropdown = document.getElementById("SeriesGenres").firstChild;
+            if (serieGenresDropdown !== undefined) {
+                var selectedId = serieGenresDropdown.options[serieGenresDropdown.selectedIndex].value;
+                if (selectedId !== "all" && selectedId !== undefined && selectedId !== '') {
+                    query += '&genre=' + selectedId;
+                }
+            }
             if (this.canQuery("SeriesCheckBox")) {
                 this.launchquery(ServerUrl + '/search/tvshows/seasons?limit=5&q=' + query,
                                 token,
@@ -106,6 +137,16 @@ define([
 
         redirect: function() {
             window.location.href = "./Login.html";
+        },
+
+        displayMovieGenres: function(data, status) {
+            var compiledTemplate = _.template(DropDownTemplate);
+            $('#MoviesGenres').html(compiledTemplate({genres: data}));
+        },
+
+        displaySerieGenres: function(data, status) {
+            var compiledTemplate = _.template(DropDownTemplate);
+            $('#SeriesGenres').html(compiledTemplate({genres: data}));
         },
 
         displayMovies: function(data, status) {
@@ -183,6 +224,10 @@ define([
             if(status.statusCode >=500 || status.statusCode <= 520)
                 message= "Erreur serveur";
             $('#UsersResultsPlaceholder').html(compiledTemplate({errorMessage: message}));
+        },
+
+        failureGenres: function() {
+
         }
     });
 

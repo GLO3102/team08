@@ -1,0 +1,6 @@
+<select>
+    <option value="all">All</option>
+<% _.each(genres, function(genre) { %>
+    <option value="<%= genre.id %>"><%= genre.name %></option>
+<% }); %>
+</select>
