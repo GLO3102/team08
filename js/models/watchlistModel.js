@@ -12,8 +12,13 @@ define([
         idAttribute: "id",
         urlRoot: urlServer + '/watchlists',
 
-        save: function() {
-            $.post(this.urlRoot, this.toJSON())
+        save: function(options) {
+            $.ajaxSetup({
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', getCookie());
+                }
+            });
+            $.post(this.urlRoot, this.toJSON(),options.success);
         },
 
         update: function(data, options) {
