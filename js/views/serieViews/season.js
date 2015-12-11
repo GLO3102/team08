@@ -16,7 +16,7 @@ define([
 
         },
         getTrailer:function(parent,callback){
-            var request = parent.model.seasons[this.noSeason].artistName+"+season"+(parseInt(this.noSeason)+1)+parent.model.episodes[this.noEpisode].trackName;
+            var request = parent.model.seasons[this.noSeason].artistName+"+season"+(parseInt(this.noSeason)+1)+"+"+parent.model.episodes[this.noEpisode].trackName;
             parent.model.noSeason = this.noSeason;
             parent.model.noEpisode = this.noEpisode;
             self.serieTrailerModel = new SerieTrailerModel(request);
