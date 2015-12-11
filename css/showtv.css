@@ -39,17 +39,30 @@
 
 }
 
-#right-info{
-    text-align:left;
-    display: inline-block;
-    float:right;
+#left-info img{
+    margin-top:8px;
+    border-color :white;
+    border-style: outset;
+    border : 3px;
 
 }
+#right-info{
+    display:inline-block;
+    text-align:left;
+    position:absolute;
+   left:103px;
+    overflow-wrap: normal;
 
+  }
+#episodeNumero,#option.option-list-numero{
+    width:75%;
+
+}
 #container-info{
     display:inline-block;
     position:relative;
     left:0;
+    height:120px;
     bordor-color:black;
     border-style : outset groove solid;
     width:100%;
@@ -57,8 +70,22 @@
 
 .container-preview{
     display:inline-block;
-    width:90%;
+    width:80%;
     height:65%;
 }
 
 
+@media all and (max-width:875px)  {
+    #container-info{
+        font-size: 0.9em;
+        height:130px;
+    }
+
+    #episodeNumero,#searchEpisodeButton,option.option-list-numero{
+        font-size: 0.8em;
+
+        height:22px;
+    }
+
+
+}

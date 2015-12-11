@@ -12,13 +12,13 @@
                             <select id="episodeNumero">
                                 <% for(var i = 0;i !== episode.length;i++){ %>
                                     <% if(noEpisode == i){ console.log("No est ",i); %>
-                                        <option id = "option-list-numero"
+                                        <option class = "option-list-numero"
                                                 selected
                                                 data-noEpisode = '<%= i %>'
                                                 data-time =      "<%= episode[i].trackTimeMillis / (60000) %>"
                                                 value="<%= i %>"> <%= episode[i].trackName %> </option>
                                     <% } else { %>
-                                        <option id = "option-list-numero"
+                                        <option class = "option-list-numero"
                                                 data-noEpisode = '<%= i %>'
                                                 data-time =      "<%= episode[i].trackTimeMillis / (60000) %>"
                                                 value="<%= i %>"> <%= episode[i].trackName %> </option>
@@ -26,7 +26,7 @@
                             </select></br>
                             Season : <%= episode[noEpisode].collectionName %></br>
                             Description : <%= episode[noEpisode].longDescription %></br>
-                            Time : <%= episode[noEpisode].trackTimeMillis / (60000) %></br>
+                            Time : <%= (episode[noEpisode].trackTimeMillis / (60000)).toFixed(2) %> minutes</br>
                         </div>
                     </div>
 

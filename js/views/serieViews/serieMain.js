@@ -60,7 +60,7 @@ define([
                  var optionSelected = selectElement.options[ selectElement.selectedIndex];
                 noEpisode = optionSelected.value;
                 //console.log(noEpisode);
-                var time = $('#option-list-numero').data('time');
+                var time = $('.option-list-numero').data('time');
             }
 
             console.log("no saison",this.model.noSeason);

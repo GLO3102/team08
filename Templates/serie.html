@@ -64,11 +64,11 @@
                                             <tbody>
                                             <% for(var i = 0;i !== serie.episodes.length;i++){ %>
                                                 <tr><td>
-                                                       <div id = 'linkModal'
-                                                       data-noEpisode = '<%= i %>'
-                                                       data-idSaison = '<%= serie.episodes[i].collectionId %>'
-                                                       data-noSaison=         '<%= serie.noSeason %>'
-                                                       ><%= serie.episodes[i].trackName %></div></td></tr>
+                                                    <div id = 'linkModal'
+                                                         data-noEpisode = '<%= i %>'
+                                                         data-idSaison = '<%= serie.episodes[i].collectionId %>'
+                                                         data-noSaison=         '<%= serie.noSeason %>'
+                                                         ><a class ='search' href = "projetSession/index.html#serie/<%= serie.seasons[0].artistName %>/<%= serie.noSeason %>/<%= i %>"><%= serie.episodes[i].trackName %></a></div></td></tr>
                                             <%} %>
                                             </tbody>
                                         </table>
