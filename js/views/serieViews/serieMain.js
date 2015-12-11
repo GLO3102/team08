@@ -22,55 +22,56 @@ define([
             this.model = new SerieMainModel();
         },
         renderSerie: function(request){
+            console.log("model",self.model);
             var seasonView = new SeasonView(undefined,undefined);
             seasonView.render(this,request,this.compileTemplate);
         },
         renderSeason: function(request,noSeason){
+            console.log("model",self.model);
             var seasonView = new SeasonView(noSeason,undefined);
             seasonView.render(this,request,this.compileTemplate);
         },
         renderEpisode: function(request,noSeason, noEpisode){
+            console.log("model",self.model);
             var seasonView = new SeasonView(noSeason,noEpisode);
             seasonView.render(this,request,this.compileTemplate);
         },
         compileTemplate:function(self){
-            console.log(self.model);
+            console.log("model",self.model);
             var compiledTemplate = _.template(SerieTemplate);
             self.$el.html( compiledTemplate({serie:self.model}) );
         },
-
+        compileTemplateModal:function(self){
+            console.log("model",self.model);
+            var compiledTemplate = _.template(ModalTemplate);
+            self.$('#panelModal').html( compiledTemplate({ serie : self.model,
+                episode: self.model.episodes,
+                noEpisode : self.model.noEpisode}) );
+        },
         openModal:function(event){
 
             event.preventDefault();
 
             var noEpisode = $(event.currentTarget).data('noepisode');
             var time  = $(event.currentTarget).data('time');
-            var self = this;
             if ( noEpisode === undefined) {
                 var selectElement = document.getElementById("episodeNumero");
-                console.log(selectElement);
+                //console.log(selectElement);
                  var optionSelected = selectElement.options[ selectElement.selectedIndex];
                 noEpisode = optionSelected.value;
-                console.log(noEpisode);
+                //console.log(noEpisode);
                 var time = $('#option-list-numero').data('time');
             }
 
-            var self = this;
-            var episode = this.model.episodes;
-            console.log(noEpisode);
+            console.log("no saison",this.model.noSeason);
 
-
-            var compiledTemplate = _.template(ModalTemplate);
-            self.$('#panelModal').html( compiledTemplate({ serie : this.model,
-                                                           episode: episode,
-                                                           noEpisode : noEpisode}) );
+            var seasonView = new SeasonView(this.model.noSeason,noEpisode);
+            seasonView.getTrailer(this,this.compileTemplateModal);
 
             $('#noModal').fadeIn(500);
             $('#panelModal').fadeIn(1000);
 
         },
-
-
         closeModal: function(event){
             $('#noModal').hide();
             $('.popModal').hide();

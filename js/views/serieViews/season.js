@@ -15,6 +15,16 @@ define([
             this.noEpisode = noEpisode;
 
         },
+        getTrailer:function(parent,callback){
+            var request = parent.model.seasons[this.noSeason].artistName+"+season"+(parseInt(this.noSeason)+1)+parent.model.episodes[this.noEpisode].trackName;
+            parent.model.noSeason = this.noSeason;
+            parent.model.noEpisode = this.noEpisode;
+            self.serieTrailerModel = new SerieTrailerModel(request);
+            self.serieTrailerModel.fetch().done(function() {
+                parent.model = _.extend(parent.model,self.serieTrailerModel.toJSON());
+                callback(parent);
+            });
+        },
         render: function(parent,request,callback) {
             var self = this;
             this.seasonCollection = new SeasonCollection(request);

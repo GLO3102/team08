@@ -68,7 +68,7 @@
                                                        data-noEpisode = '<%= i %>'
                                                        data-idSaison = '<%= serie.episodes[i].collectionId %>'
                                                        data-noSaison=         '<%= serie.noSeason %>'
-                                                       ><a class ='search' href = "projetSession/index.html#serie/<%= serie.seasons[0].artistName %>/<%= serie.noSeason %>/<%= i %>"><%= serie.episodes[i].trackName %></a></div></td></tr>
+                                                       ><%= serie.episodes[i].trackName %></div></td></tr>
                                             <%} %>
                                             </tbody>
                                         </table>

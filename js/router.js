@@ -32,6 +32,7 @@ define([
 
     var initialize = function(userProfile){
         var app_router = new AppRouter;
+        var serieView = new  SerieView();
         app_router.on('route:defaultAction', function (actions) {
             var menuView = new MenuView(userProfile);
 
@@ -76,28 +77,24 @@ define([
         app_router.on('route:searchSerie', function(){
             var menuView = new MenuView(userProfile);
 
-            var serieView = new  SerieView();
             serieView.renderSerie('thewalkingdead');
         });
 
         app_router.on('route:searchSerieName', function(name){
             var menuView = new MenuView(userProfile);
 
-            var serieView = new  SerieView();
             serieView.renderSerie(name);
         });
 
         app_router.on('route:searchSerieSeason', function(name,noSeason){
             var menuView = new MenuView(userProfile);
 
-            var serieView = new  SerieView();
             serieView.renderSeason(name,noSeason);
         });
 
         app_router.on('route:searchSerieEpisode', function(name,noSeason,noEpisode){
             var menuView = new MenuView(userProfile);
 
-            var serieView = new  SerieView();
             serieView.renderEpisode(name,noSeason,noEpisode);
         });
 
