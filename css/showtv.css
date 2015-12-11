@@ -10,24 +10,55 @@
     z-index: 9000 !important;
 }
 
+#close
+{
+    position:absolute;
+}
+
 .popModal{
     display:none;
-
+    border-style : outset groove solid;
+    border-color:#808080;
+    border-bottom-right-radius: 5px;
     margin-left : auto;
     margin-right : auto;
     z-index: 9999 !important;
-
-   /* position:fixed;*/
-
     background-color: white;
 }
 
 #panelModal{
-    border-style : outset groove solid;
-    border-color:#808080;
-    border-bottom-right-radius: 5px;
+    text-align : center;
+
     width: 80%;
     height: 100%;
+}
+
+#left-info{
+    display:inline-block;
+    float:left;
+
+}
+
+#right-info{
+    text-align:left;
+    display: inline-block;
+    float:right;
+
+}
+
+#container-info{
+    display:inline-block;
+    position:relative;
+    left:0;
+    bordor-color:black;
+    border-style : outset groove solid;
+    width:100%;
+}
+
+.container-preview{
+    display:inline-block;
+    width:90%;
+    height:65%;
 }
 
 

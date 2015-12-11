@@ -1,27 +1,38 @@
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Episode</h3>
-        </div>
-        <div class="panel-body">
-            <% _.each(serie, function(serie) { %>
-            <div class="col-lg-2">
-                <div class="container-FilmographySnippet">
-                    <a href="">
-                        <div class=" FilmographySnippet">
-                            <img src=""/>
 
-                            <div>
+    <div class="panel-default">
+        <div class="panel-heading">Episode : <%= episode[noEpisode].trackName %></div>
+            <div class="table-responsive ">
 
-                            </div>
-                            <div>
 
-                            </div>
+                    <div id = "container-info">
+                        <div id = "left-info"> <img src ='<%= episode[noEpisode].artworkUrl100 %>' /></div>
+
+                        <div id = "right-info">
+                            <button id="searchEpisodeButton">Search</button>
+                            <select id="episodeNumero">
+                                <% for(var i = 0;i !== episode.length;i++){ %>
+                                <option id = "option-list-numero"
+                                        data-noEpisode = '<%= i %>'
+                                        data-time =      "<%= episode[i].trackTimeMillis / (60000) %>"
+                                        value="<%= i %>"> <%= episode[i].trackName %> </option>
+                                <% }; %>
+                            </select></br>
+                            Season : <%= episode[noEpisode].collectionName %></br>
+                            Description : <%= episode[noEpisode].longDescription %></br>
+                            Time : <=% episode[noEpisode].trackTimeMillis / (60000) %></br>
                         </div>
-                    </a>
-                </div>
+                    </div>
+
+
             </div>
-            <% }); %>
-        </div>
     </div>
+    <div class="preview-panel container-preview">
+        <div class='blogvision'>
+            <iframe id="preview-frame-modal"
+                    src='<%= episode[noEpisode].urlSerieTrailer %>'></iframe>
+
+        </div>
+
+    </div>
+    <!--- showTv_otherSeason-->
 </div>

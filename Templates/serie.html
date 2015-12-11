@@ -24,20 +24,8 @@
                     <div class="panel-body">
 
                         <div class="container_preview">
-                            <div id = "noModal">
+                            <div id = "noModal"><button id = "close">X</button>
                                 <div id = "panelModal" class = 'popModal'>
-                                    <div class=" panel panel-default">
-                                        <div class="panel-heading">ShowTv : <%= serie.artistName %></div>
-                                        <div class="panel-body">
-                                            <div class="table-responsive ">
-                                                <table class="table">
-                                                    <tbody>
-                                                    coucou
-                                                    </tbody>
-                                                </table>
-                                             </div>
-                                          </div>
-                                        </div>
 
                                 </div>
                             </div>
@@ -78,13 +66,8 @@
                                                 <tr><td>
                                                        <div id = 'linkModal'
                                                        data-noEpisode = '<%= i %>'
+                                                       data-idSaison = '<%= serie.episodes[i].collectionId %>'
                                                        data-noSaison=         '<%= serie.noSeason %>'
-                                                       data-saisonName= '<%= serie.episodes[i].artistName %>'
-                                                       data-nameEpisode='<%= serie.episodes[i].trackName %>'
-                                                       data-img =       "<%= serie.episodes[i].artwork60 %>"
-                                                       data-preview =   "<%= serie.urlTrailer %>"
-                                                       data-desc =      "<%= serie.episodes[i].shortDescription %>"
-                                                       data-time =      "<%= serie.episodes[i].trackTimeMillis / (60000) %>"
                                                        ><a class ='search' href = "projetSession/index.html#serie/<%= serie.seasons[0].artistName %>/<%= serie.noSeason %>/<%= i %>"><%= serie.episodes[i].trackName %></a></div></td></tr>
                                             <%} %>
                                             </tbody>

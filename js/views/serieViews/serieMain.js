@@ -7,14 +7,17 @@ define([
     'backbone',
     '../../models/SerieModels/serieMainModel',
     'views/serieViews/season',
-    'text!../../../Templates/serie.html'
-],function($,_,Backbone,SerieMainModel, SeasonView,SerieTemplate){
+    'text!../../../Templates/serie.html',
+    'text!../../../Templates/modalWindow.html'
+],function($,_,Backbone,SerieMainModel, SeasonView,SerieTemplate,ModalTemplate){
     var SerieMain = Backbone.View.extend({
         events: {
             'click #linkModal': 'openModal',
-            'click #noModal': 'closeModal'
+            'click #searchEpisodeButton': 'openModal',
+            'click #close': 'closeModal'
         },
         el: $('#Page_Container'),
+        episode: undefined,
         initialize: function() {
             this.model = new SerieMainModel();
         },
@@ -37,52 +40,37 @@ define([
         },
 
         openModal:function(event){
+
             event.preventDefault();
-            var episodeId = $(event.currentTarget).data('id');
-            var episodeSaisonName = $(event.currentTarget).data('saisonName');
-            var episodeName  = $(event.currentTarget).data('nameEpisode');
-            var episodeImg  = $(event.currentTarget).data('img');
-            var episodePreview  = $(event.currentTarget).data('preview');
-            var episodeDesc  = $(event.currentTarget).data('desc');
-            var episodeTrackTimeMillis  = $(event.currentTarget).data('time');
-            var token = this.getCookie('umovie_access_token');// besoin pour get via ajax
+
+            var noEpisode = $(event.currentTarget).data('noepisode');
+            var time  = $(event.currentTarget).data('time');
+            var self = this;
+            if ( noEpisode === undefined) {
+                var selectElement = document.getElementById("episodeNumero");
+                console.log(selectElement);
+                 var optionSelected = selectElement.options[ selectElement.selectedIndex];
+                noEpisode = optionSelected.value;
+                console.log(noEpisode);
+                var time = $('#option-list-numero').data('time');
+            }
+
+            var self = this;
+            var episode = this.model.episodes;
+            console.log(noEpisode);
 
 
-            console.log(episodeId);
-            console.log(episodeSaisonName);
-            console.log(episodeName);
-            console.log(episodeImg);
-            console.log(episodePreview);
-            console.log(episodeDesc);
-            console.log(episodeTrackTimeMillis);
+            var compiledTemplate = _.template(ModalTemplate);
+            self.$('#panelModal').html( compiledTemplate({ serie : this.model,
+                                                           episode: episode,
+                                                           noEpisode : noEpisode}) );
 
             $('#noModal').fadeIn(500);
-            $('#noModal').fadeTo("slow",0.8);
             $('#panelModal').fadeIn(1000);
-            $('#panelModal').html('<img src = " '+ episodeImg +'"/>' +
-                                  '<p>Season name : ' + episodeSaisonName + '</p>' +
-                                  '<p>Episode name :' + episodeName + '</p>' +
-
-
-                                  ' <iframe id="preview-frame" src=" '+ episodePreview +' "></iframe></div>'+
-                                  '<p>Description : ' + episodeDesc + '</p>' +
-                                  '<p>Time :  ' +episodeTrackTimeMillis + '</p>');
-
-
-
 
         },
 
-        getCookie: function(cname) {
-        var name = cname + "=";
-        var ca = document.cookie.split(';');
-        for(var i=0; i<ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1);
-            if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-        }
-        return "";
-    },
+
         closeModal: function(event){
             $('#noModal').hide();
             $('.popModal').hide();
