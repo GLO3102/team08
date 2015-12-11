@@ -45,10 +45,16 @@ define([
 
             if (wathchlistNameInputBox !== undefined) {
                 var watchlistName = wathchlistNameInputBox.value;
-
+                var _this = this;
                 if (watchlistName !== undefined && watchlistName !== "") {
-                    var watchlistModel = new WatchlistModel({ name: watchlistName})
-                    watchlistModel.save();
+                    var name = document.getElementById("user_email");
+                    var watchlistModel = new WatchlistModel({ name: watchlistName, owner: name.innerText});
+                    var options = {
+                        success: function() {
+                            _this.display();
+                        }
+                    };
+                    watchlistModel.save(options);
                     this.display();
                 }
             }
@@ -63,7 +69,11 @@ define([
                 var options = {
                     success: function(model, response) {
                         _this.display();
+                    },
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader('Authorization', getCookie());
                     }
+
                 };
                 watchlistModel.destroy(options);
             }
@@ -89,6 +99,9 @@ define([
                 var options = {
                     success: function(model, response) {
                         _this.display();
+                    },
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader('Authorization', getCookie());
                     }
                 };
                 modelToUpdate.update(data, options);
@@ -155,6 +168,9 @@ define([
             var options = {
                 success: function(model, response) {
                     _this.display();
+                },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', getCookie());
                 }
             };
             modelToUpdate.update(data, options);

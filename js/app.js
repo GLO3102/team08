@@ -40,6 +40,7 @@ define([
 
     var setProfile = function(data) {
         data.profileImage = "http://www.gravatar.com/avatar/" + CryptoJS.MD5(data.email.trim().toLowerCase()).toString() ;;
+        console.log(data);
         Router.initialize(data);
     };
 

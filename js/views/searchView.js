@@ -196,7 +196,8 @@ define([
                 message= "Erreur client";
             if(status.statusCode >=500 || status.statusCode <= 520)
                 message= "Erreur serveur";
-            $('#MoviesResultsPlaceholder').html(compiledTemplate({errorMessage: message}));
+            var template = _.template(NoResultsTemplate);
+            document.getElementById('MoviesResultsPlaceholder').innerHTML = template({ data : "Movies", errorMessage:message });
         },
 
         failureSeries: function(data, status) {
@@ -205,7 +206,8 @@ define([
                 message= "Erreur client";
             if(status.statusCode >=500 || status.statusCode <= 520)
                 message= "Erreur serveur";
-            $('#SeriesResultsPlaceholder').html(compiledTemplate({errorMessage: message}));
+            var template = _.template(NoResultsTemplate);
+            document.getElementById('SeriesResultsPlaceholder').innerHTML = template({ data : "Movies", errorMessage: message });
         },
 
         failureActors: function(data, status) {
@@ -214,7 +216,9 @@ define([
                 message= "Erreur client";
             if(status.statusCode >=500 || status.statusCode <= 520)
                 message= "Erreur serveur";
-            $('#ActorsResultsPlaceholder').html(compiledTemplate({errorMessage: message}));
+            var template = _.template(NoResultsTemplate);
+            document.getElementById('ActorsResultsPlaceholder').innerHTML = template({ data : "Movies", errorMessage: message });
+
         },
 
         failureUsers: function(data, status) {
@@ -223,7 +227,9 @@ define([
                 message= "Erreur client";
             if(status.statusCode >=500 || status.statusCode <= 520)
                 message= "Erreur serveur";
-            $('#UsersResultsPlaceholder').html(compiledTemplate({errorMessage: message}));
+            var template = _.template(NoResultsTemplate);
+            document.getElementById('UsersResultsPlaceholder').innerHTML = template({ data : "Movies", errorMessage: message });
+
         },
 
         failureGenres: function() {
