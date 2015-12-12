@@ -8,12 +8,15 @@ define([
     'text!../../Templates/ActorsSearchResults.html',
     'text!../../Templates/UsersSearchResults.html',
     'text!../../Templates/NoResults.html',
-    'text!../../Templates/DropdownTemplate.html'
-], function($, _, Backbone, searchTemplate, MoviesTemplate, SeriesTemplate, ActorsTemplate, UsersTemplate, NoResultsTemplate, DropDownTemplate){
+    'text!../../Templates/DropdownTemplate.html',
+    'text!../../Templates/WatchlistDropDownTemplate.html'
+], function($, _, Backbone, searchTemplate, MoviesTemplate, SeriesTemplate, ActorsTemplate, UsersTemplate, NoResultsTemplate, DropDownTemplate, WatchlistDropdown){
     var SearchView = Backbone.View.extend({
         el: $('#Page_Container'),
+        userInfos: undefined,
 
-        initialize: function() {
+        initialize: function(userProfile) {
+            this.userInfos = userProfile;
             this.render();
         },
 
@@ -22,11 +25,13 @@ define([
             this.$el.html( compiledTemplate({}) );
 
             this.initializeGenreLists();
+            this.initializeWatchlists();
         },
 
         events: {
             'click #searchbutton' : 'search',
-            'click #followButton' : 'follow'
+            'click #followButton' : 'follow',
+            'click .add-watchlist': 'addMovieToWatchList'
         },
 
         initializeGenreLists: function() {
@@ -38,6 +43,27 @@ define([
                              getCookie(),
                              this.displaySerieGenres,
                              this.failureGenres);
+        },
+
+        initializeWatchlists: function() {
+            var _this = this;
+            $.ajax({
+                type: "GET",
+                url: ServerUrl + '/watchlists',
+                success: function(data, status) {
+                    _this.displayWatchlists(data, status);
+                },
+                statusCode: {
+                    401: this.redirect,
+                    304: function(data, status) {
+                        _this.displayWatchlists(data, status);
+                    }
+                },
+                failure: this.failureGenres,
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', getCookie());
+                }
+            });
         },
 
         getSearchBoxContent: function() {
@@ -153,6 +179,15 @@ define([
             $('#SeriesGenres').html(compiledTemplate({genres: data}));
         },
 
+        displayWatchlists: function(data, status) {
+            _this = this;
+            var userWatchlists = data.filter(function(watchlist) {
+                return watchlist.owner !== undefined && watchlist.owner.id === _this.userInfos.id;
+            });
+            var compiledTemplate = _.template(WatchlistDropdown);
+            $('#watchlistsNames').html(compiledTemplate({genres: userWatchlists}));
+        },
+
         displayMovies: function(data, status) {
             if (data.resultCount === 0) {
                 var template = _.template(NoResultsTemplate);
@@ -238,6 +273,44 @@ define([
 
         failureGenres: function() {
 
+        },
+
+        addMovieToWatchList : function(event) {
+            var currentElement = $(event.currentTarget).data('id');
+
+            this.launchquery(ServerUrl + '/movies/' + currentElement,
+                             getCookie(),
+                             this.addtowatchlist,
+                             this.watchlisterror);
+        },
+
+        addtowatchlist: function(data, status) {
+            var watchListId = undefined;
+            var selectElement = document.getElementById("watchlistsNames").firstChild;
+            if (selectElement.selectedIndex !== undefined) {
+                var selectedOption = selectElement.options[ selectElement.selectedIndex ];
+                watchListId = selectedOption.value;
+            } else {
+                alert("No watchlist exists!")
+            }
+
+            if (watchListId !== undefined) {
+                $.ajax({
+                    type: "POST",
+                    url: urlServer + '/watchlists/' + watchListId + '/movies',
+                    data: data.results[0],
+                    success: function () {
+                        alert('Add to watchlist was successfull');
+                    },
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader('Authorization', getCookie());
+                    }
+                });
+            }
+        },
+
+        watchlisterror: function() {
+            alert('an error occured while adding movie to watchlist')
         }
     });
 

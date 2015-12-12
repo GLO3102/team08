@@ -17,11 +17,9 @@
                             <div>
                                 <%= (new Date(movie.releaseDate)).toDateString() %>
                             </div>
-                            <input class="<%= movie.trackId %> " id = "<%= movie %>" value="<%= movie.trackName %>"
-                                   placeholder="Name" hidden><button class="add-watchlist" data-id="<%= movie.trackName %>"
-                                >+Add watchlist </button>
                         </div>
                     </a>
+                    <button class="add-watchlist" data-id="<%= movie.trackId %>">+Add watchlist </button>
                 </div>
             </div>
             <% }); %>

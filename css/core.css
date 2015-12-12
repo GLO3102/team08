@@ -164,3 +164,7 @@ li.message-preview {
 .twitter-typeahead .tt-menu {
     background-color: white;
 }
+
+#watchlistSelection {
+    float: right;
+}

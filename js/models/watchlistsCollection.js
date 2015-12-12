@@ -7,7 +7,6 @@ define([
         model: WatchlistModel,
         url: urlServer + '/watchlists',
         sync:function(method, collection, options){
-            var token = getCookie();
             var self = this;
             var params = _.extend({
                 url:self.url,

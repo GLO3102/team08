@@ -10,21 +10,32 @@ define([
     var WatchListsView = Backbone.View.extend({
         el: $('#Page_Container'),
         searchResults: undefined,
+        userProfile: undefined,
+        models: undefined,
 
-        initialize: function() {
+        initialize: function(userProfile) {
+            this.userProfile = userProfile;
             this.display();
         },
 
         display: function() {
             this.collection = new WatchListCollection();
+            _this = this;
             this.collection.fetch({
-                success: this.render
+                success: function(collection, array) {
+                    _this.models = array;
+                    _this.render(collection, array, _this.userProfile.id);
+                    _this.collection = collection;
+                }
             });
         },
 
-        render: function(collection, array) {
+        render: function(collection, array, id) {
+            var userWatchlists = array.filter(function(watchlist) {
+                return watchlist.owner !== undefined && watchlist.owner.id === id;
+            });
             var compiledTemplate = _.template(watchlistsTemplate);
-            $('#Page_Container').html( compiledTemplate({ watchlists : array }) );
+            $('#Page_Container').html( compiledTemplate({ watchlists : userWatchlists }) );
         },
 
         events: {

@@ -36,14 +36,14 @@ define([
         app_router.on('route:defaultAction', function (actions) {
             var menuView = new MenuView(userProfile);
 
-            var watchlistView = new WatchlistView();
+            var watchlistView = new WatchlistView(userProfile);
         });
 
         app_router.on('route:searchPage', function () {
 
             var menuView = new MenuView(userProfile);
 
-            var searchView = new SearchView();
+            var searchView = new SearchView(userProfile);
         });
 
         app_router.on('route:searchActor', function () {
