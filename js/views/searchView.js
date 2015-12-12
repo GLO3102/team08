@@ -29,12 +29,21 @@ define([
             this.initializeGenreLists();
             this.initializeWatchlists();
             this.initAutocomplete();
+            this.firstLoadQuery();
         },
 
         events: {
             'click #searchbutton' : 'search',
             'click #followButton' : 'follow',
             'click .add-watchlist': 'addMovieToWatchList'
+        },
+
+        firstLoadQuery: function() {
+            var queryParam = this.getParameterByName("q");
+            if (queryParam !== undefined && queryParam !== ""){
+                this.setSearchBoxContent(queryParam);
+            }
+            this.search();
         },
 
         initializeGenreLists: function() {
@@ -112,6 +121,11 @@ define([
             return searchBox.value;
         },
 
+        setSearchBoxContent: function(q) {
+            var searchBox = document.getElementById("searchbox");
+            searchBox.value = q;
+        },
+
         follow: function(){
             
         },
@@ -136,7 +150,7 @@ define([
         searchMovies: function(query, token) {
             var query = ServerUrl + '/search/movies?limit=5&q=' + query;
             var movieGenresDropdown = document.getElementById("MoviesGenres").firstChild;
-            if (movieGenresDropdown !== undefined) {
+            if (movieGenresDropdown !== undefined && movieGenresDropdown !== null) {
                 var selectedId = movieGenresDropdown.options[movieGenresDropdown.selectedIndex].value;
                 if (selectedId !== "all" && selectedId !== undefined && selectedId !== '') {
                     query += '&genre=' + selectedId;
@@ -154,7 +168,7 @@ define([
         searchSeries: function(query, token) {
             var query = ServerUrl + '/search/movies?limit=5&q=' + query;
             var serieGenresDropdown = document.getElementById("SeriesGenres").firstChild;
-            if (serieGenresDropdown !== undefined) {
+            if (serieGenresDropdown !== undefined && serieGenresDropdown !== null) {
                 var selectedId = serieGenresDropdown.options[serieGenresDropdown.selectedIndex].value;
                 if (selectedId !== "all" && selectedId !== undefined && selectedId !== '') {
                     query += '&genre=' + selectedId;
@@ -245,7 +259,6 @@ define([
                 document.getElementById('SeriesResultsPlaceholder').innerHTML = template({ data : "Series", errorMessage: "No Results" });
             } else {
                 var compiledTemplate = _.template(SeriesTemplate);
-                console.log(data.results);
                 $('#SeriesResultsPlaceholder').html(compiledTemplate({series: data.results}));
             }
         },
@@ -362,6 +375,28 @@ define([
             }
 
             return query;
+        },
+
+        getParameterByName: function(name) {
+            var value = "";
+            var params = this.getUrlVars();
+            if (params[name] !== undefined) {
+                value = params[name];
+            }
+            return value;
+        },
+
+        getUrlVars: function()
+        {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for(var i = 0; i < hashes.length; i++)
+            {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
         }
     });
 
