@@ -25,7 +25,8 @@ define([
         },
 
         events: {
-            'click #searchbutton' : 'search'
+            'click #searchbutton' : 'search',
+            'click #followButton' : 'follow'
         },
 
         initializeGenreLists: function() {
@@ -44,6 +45,9 @@ define([
             return searchBox.value;
         },
 
+        follow: function(){
+            
+        },
         search: function() {
             var query = this.getSearchBoxContent();
 
