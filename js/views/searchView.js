@@ -9,7 +9,9 @@ define([
     'text!../../Templates/UsersSearchResults.html',
     'text!../../Templates/NoResults.html',
     'text!../../Templates/DropdownTemplate.html',
-    'text!../../Templates/WatchlistDropDownTemplate.html'
+    'text!../../Templates/WatchlistDropDownTemplate.html',
+    'typeahead',
+    'bloodhound'
 ], function($, _, Backbone, searchTemplate, MoviesTemplate, SeriesTemplate, ActorsTemplate, UsersTemplate, NoResultsTemplate, DropDownTemplate, WatchlistDropdown){
     var SearchView = Backbone.View.extend({
         el: $('#Page_Container'),
@@ -26,6 +28,7 @@ define([
 
             this.initializeGenreLists();
             this.initializeWatchlists();
+            this.initAutocomplete();
         },
 
         events: {
@@ -63,6 +66,44 @@ define([
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', getCookie());
                 }
+            });
+        },
+
+        initAutocomplete : function() {
+            $('#searchbox').typeahead({
+                    hint: true,
+                    hightlight: true,
+                    minLength: 1
+                },
+                {
+                    name: 'states',
+                    source: function (query, processSync, processAsync) {
+                        SearchView.prototype.onUserType(query, processAsync);
+                    }
+                }
+            );
+        },
+
+        onUserType: function(query, processAsync) {
+            var query = this.getEncodedQuery();
+            var token = getCookie();
+
+            if (!(query === "" || query === undefined)) {
+                this.launchquery(ServerUrl + '/search?q=' + query,
+                    token,
+                    function(data) {
+                        processAsync(SearchView.prototype.sortSearchResults(data.results))
+                    },
+                    SearchView.prototype.searchFailure)
+            }
+        },
+
+        searchFailure: function() {
+        },
+
+        sortSearchResults : function(results) {
+            return results.map(function(track) {
+                return track.artistName;
             });
         },
 
@@ -311,6 +352,16 @@ define([
 
         watchlisterror: function() {
             alert('an error occured while adding movie to watchlist')
+        },
+
+        getEncodedQuery: function() {
+            var searchBox = document.getElementById("searchbox");
+            var query = searchBox.value;
+            if (!(query === "" || query === undefined)) {
+                query = encodeURI(query);
+            }
+
+            return query;
         }
     });
 
