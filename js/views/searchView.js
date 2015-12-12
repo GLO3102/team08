@@ -46,6 +46,35 @@ define([
             this.search();
         },
 
+        follow: function(event){
+            //  alert($(event.currentTarget).attr('value'));
+            var id = $(event.currentTarget).attr('value');
+            var postData = {id: id };
+            var uri = ServerUrl + '/follow';
+            $.ajax({
+                type: "POST",
+                url: uri,
+                data: postData,
+                success: function()
+                {
+                    alert("succes follow" + id );
+                },
+                contentType: "application/json",
+                statusCode: {
+
+                },
+                failure: function()
+                {
+                    alert("echec follow" + id );
+                },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization',  getCookie());
+
+                }
+
+            });
+
+        },
         initializeGenreLists: function() {
             this.launchquery(ServerUrl + '/genres/movies',
                              getCookie(),
