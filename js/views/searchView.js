@@ -47,7 +47,7 @@ define([
         },
 
         follow: function(event){
-            //  alert($(event.currentTarget).attr('value'));
+            alert($(event.currentTarget).attr('value'));
             var id = $(event.currentTarget).attr('value');
             var postData = {id: id };
             var uri = ServerUrl + '/follow';
@@ -59,7 +59,7 @@ define([
                 {
                     alert("succes follow" + id );
                 },
-                contentType: "application/json",
+                contentType: "application/json; charset=utf-8",
                 statusCode: {
 
                 },
@@ -155,9 +155,7 @@ define([
             searchBox.value = q;
         },
 
-        follow: function(){
-            
-        },
+
         search: function() {
             var query = this.getSearchBoxContent();
 
@@ -359,6 +357,7 @@ define([
         },
 
         addMovieToWatchList : function(event) {
+            alert("ok");
             var currentElement = $(event.currentTarget).data('id');
 
             this.launchquery(ServerUrl + '/movies/' + currentElement,
@@ -368,6 +367,7 @@ define([
         },
 
         addtowatchlist: function(data, status) {
+
             var watchListId = undefined;
             var selectElement = document.getElementById("watchlistsNames").firstChild;
             if (selectElement.selectedIndex !== undefined) {
