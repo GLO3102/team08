@@ -35,6 +35,7 @@ define([
         events: {
             'click #searchbutton' : 'search',
             'click #followButton' : 'follow',
+            'click #unfollowButton':'unfollow',
             'click .add-watchlist': 'addMovieToWatchList'
         },
 
@@ -45,25 +46,52 @@ define([
             }
             this.search();
         },
+        unfollow:function(){
+            var id = $(event.currentTarget).attr('value');
+
+
+            var uri = ServerUrl + '/follow/'+ id;
+            $.ajax({
+                type: "DELETE",
+                url: uri,
+                success: function()
+                {
+                    alert("succes follow" + id );
+                },
+                statusCode: {
+                    401: this.redirect
+                },
+                failure: function()
+                {
+                    alert("echec follow" + id );
+                },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization',  getCookie());
+
+                }
+
+            });
+        },
 
         follow: function(event){
-            alert($(event.currentTarget).attr('value'));
+           // alert($(event.currentTarget).attr('value'));
             var id = $(event.currentTarget).attr('value');
+
             var postData = {id: id };
             var uri = ServerUrl + '/follow';
             $.ajax({
                 type: "POST",
                 url: uri,
                 data: postData,
-                success: function()
+                success: function(data, status)
                 {
-                    alert("succes follow" + id );
+                    alert(data +"  "+ id );
                 },
-                contentType: "application/json; charset=utf-8",
-                statusCode: {
 
+                statusCode: {
+                    401: this.redirect
                 },
-                failure: function()
+                failure: function(data, status)
                 {
                     alert("echec follow" + id );
                 },
