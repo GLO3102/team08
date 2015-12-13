@@ -45,7 +45,7 @@ define([
 
             var menuView = new MenuView(userProfile);
 
-            var userView = new UserView({ 'id' : id});
+            var userView = new UserView(userProfile, { 'id' : id});
         });
 
         app_router.on('route:searchPage', function () {

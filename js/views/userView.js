@@ -6,8 +6,10 @@ define([
 ], function($, _, Backbone, userTemplate){
     var UserView = Backbone.View.extend({
         el: $('#Page_Container'),
+        userProfile: undefined,
 
-        initialize: function(userProfile) {
+        initialize: function(current, userProfile) {
+            this.userProfile = current;
             this.render(userProfile);
         },
 
@@ -33,12 +35,13 @@ define([
 
         followButtonClick:function(ev){
             var id = $(ev.currentTarget).data('id');
-            var method = 'DELETE';
-            if (ev.currentTarget.innerText === 'follow') {
-                method = 'POST';
+            var method = 'POST';
+            var uri = ServerUrl + '/follow'
+            if (ev.currentTarget.innerText === 'unfollow') {
+                method = 'DELETE';
+                uri = uri + '/' + id;
             }
             var _this = this;
-            var uri = ServerUrl + '/follow/'+ id;
             $.ajax({
                 type: method,
                 url: uri,
@@ -49,11 +52,10 @@ define([
                     401: this.redirect
                 },
                 failure: function() {
-                    alert("echec unfollow" + id );
+                    alert("echec toggle" + id );
                 },
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization',  getCookie());
-
                 }
 
             });
