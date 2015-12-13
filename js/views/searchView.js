@@ -34,8 +34,8 @@ define([
 
         events: {
             'click #searchbutton' : 'search',
-            'click #followButton' : 'follow',
-            'click #unfollowButton':'unfollow',
+            'click .followButton' : 'follow',
+            'click .unfollowButton':'unfollow',
             'click .add-watchlist': 'addMovieToWatchList'
         },
 
@@ -55,15 +55,15 @@ define([
                 type: "DELETE",
                 url: uri,
                 success: function()
-                {
-                    alert("succes follow" + id );
+                {    $(element).removeClass('unfollowButton').addClass('followButton').text('Follow')
+                    alert("succes unfollow" + id );
                 },
                 statusCode: {
                     401: this.redirect
                 },
                 failure: function()
                 {
-                    alert("echec follow" + id );
+                    alert("echec unfollow" + id );
                 },
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization',  getCookie());
@@ -76,7 +76,7 @@ define([
         follow: function(event){
            // alert($(event.currentTarget).attr('value'));
             var id = $(event.currentTarget).attr('value');
-
+            var element =  event.currentTarget;
             var postData = {id: id };
             var uri = ServerUrl + '/follow';
             $.ajax({
@@ -84,8 +84,9 @@ define([
                 url: uri,
                 data: postData,
                 success: function(data, status)
-                {
-                    alert(data +"  "+ id );
+                {   $(element).removeClass('followButton').addClass('unfollowButton').text('UnFollow');
+                    alert("succes follow "+ id );
+
                 },
 
                 statusCode: {

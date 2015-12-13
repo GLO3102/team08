@@ -7,7 +7,7 @@
             <ul>
                 <% _.each(users, function(user) { %>
                 <li>
-                    <button id="followButton" type="button" value=<%= user.id %> class="btn btn-default"><%= user.name %></button>, <%= user.email %>
+                    <button  type="button" value=<%= user.id %> class="followButton">Follow</button><%= user.name %>, <%= user.email %>
                 </li>
                 <% }); %>
             </ul>

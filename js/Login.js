@@ -32,7 +32,7 @@ $(document).ready(function() {
     };
 
     var authorizeSuccess = function(data, status) {
-        document.cookie="umovie_access_token=" + data.token + "; expires=Thu, 29 Dec 2016 00:00:00 UTC";
+        document.cookie="umovie_access_token=" + data.token + "; expires=Thu, 29 Dec 2016 00:00:00 UTC"+"; id="+ data.id;
         window.location.href = './index.html';
     };
 
