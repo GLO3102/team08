@@ -1,8 +1,32 @@
 <div id="page-wrapper">
 
-    <%= user.name %> : <%= user.email %>
+    <div class="container-fluid">
 
-    <h2>Friends </h2>
-    <div id="friendlist"></div>
-    <div id="watchlists"></div>
+        <!-- Page Heading -->
+        <div class="row">
+            <h1 class="page-header">
+                <%= user.name %> : <%= user.email %>
+            </h1>
+            <button id="followButton"
+                    data-id="<%= user.id %>">follow</button>
+            <h2>Friends </h2>
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Users</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <% _.each(user.following, function(u) { %>
+                            <li>
+                                <%= u.name %> : <%= u.email %>
+                            </li>
+                            <% }); %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="watchlists"></div>
+        </div>
+    </div>
 </div>

@@ -6,93 +6,68 @@ define([
 ], function($, _, Backbone, userTemplate){
     var UserView = Backbone.View.extend({
         el: $('#Page_Container'),
-        userInfos: undefined,
+        userProfile: undefined,
 
-        initialize: function(userProfile) {
-            this.userInfos = userProfile;
-            this.render();
+        initialize: function(current, userProfile) {
+            this.userProfile = current;
+            this.render(userProfile);
         },
 
-        render: function() {
-            var compiledTemplate = _.template(userTemplate);
-            this.$el.html( compiledTemplate({ 'user' : this.userInfos}) );
-            this.initFriends();
+        render: function(userProfile) {
+            this.initUser(userProfile);
         },
 
         events: {
-            'click .followButton' : 'follow',
-            'click .unfollowButton':'unfollow',
+            'click #followButton' : 'followButtonClick'
         },
 
-        initFriends: function() {
-            this.launchquery(ServerUrl + '/users', this.displayFriends, this.userFailure);
+        initUser: function(userProfile) {
+            this.launchquery(ServerUrl + '/users/' + userProfile.id, getCookie(), this.displayUser, this.userFailure);
         },
 
-        displayFriends: function(data, status) {
-
+        displayUser: function(data, status) {
+            var compiledTemplate = _.template(userTemplate);
+            document.getElementById('Page_Container').innerHTML = compiledTemplate({ 'user' : data});
         },
 
         userFailure: function(data, status) {
-
         },
 
-        unfollow:function(){
-            var id = $(event.currentTarget).attr('value');
-
-
-            var uri = ServerUrl + '/follow/'+ id;
+        followButtonClick:function(ev){
+            var id = $(ev.currentTarget).data('id');
+            var method = 'POST';
+            var uri = ServerUrl + '/follow'
+            if (ev.currentTarget.innerText === 'unfollow') {
+                method = 'DELETE';
+                uri = uri + '/' + id;
+            }
+            var _this = this;
             $.ajax({
-                type: "DELETE",
+                type: method,
                 url: uri,
-                success: function()
-                {    $(element).removeClass('unfollowButton').addClass('followButton').text('Follow')
-                    alert("succes unfollow" + id );
+                success: function() {
+                    _this.toggleButton();
                 },
                 statusCode: {
                     401: this.redirect
                 },
-                failure: function()
-                {
-                    alert("echec unfollow" + id );
+                failure: function() {
+                    alert("echec toggle" + id );
                 },
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization',  getCookie());
-
                 }
 
             });
         },
 
-        follow: function(event){
-            // alert($(event.currentTarget).attr('value'));
-            var id = $(event.currentTarget).attr('value');
-            var element =  event.currentTarget;
-            var postData = {id: id };
-            var uri = ServerUrl + '/follow';
-            $.ajax({
-                type: "POST",
-                url: uri,
-                data: postData,
-                success: function(data, status)
-                {   $(element).removeClass('followButton').addClass('unfollowButton').text('UnFollow');
-                    alert("succes follow "+ id );
-
-                },
-
-                statusCode: {
-                    401: this.redirect
-                },
-                failure: function(data, status)
-                {
-                    alert("follow " + id + " failed" );
-                },
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader('Authorization',  getCookie());
-
-                }
-
-            });
-
+        toggleButton: function() {
+            var button = document.getElementById('followButton');
+            if (button.innerText === 'follow') {
+                button.innerText = 'unfollow';
+            } else {
+                button.innerText = 'follow';
+            }
         },
 
         launchquery: function(uri, token, onSuccess, onFailure) {
@@ -101,7 +76,8 @@ define([
                 url: uri,
                 success: onSuccess,
                 statusCode: {
-                    401: this.redirect
+                    401: this.redirect,
+                    304: onSuccess
                 },
                 failure: onFailure,
                 beforeSend: function(xhr) {

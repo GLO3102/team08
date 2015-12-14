@@ -13,8 +13,7 @@ define([
     var AppRouter = Backbone.Router.extend({
         routes: {
             // Default
-            'user': 'userPage',
-            'user/': 'userPage',
+            'user/:id': 'userPage',
             'search/': 'searchPage',
             'search': 'searchPage',
             'actor/' : 'searchActor',
@@ -42,11 +41,11 @@ define([
             var watchlistView = new WatchlistView(userProfile);
         });
 
-        app_router.on('route:userPage', function () {
+        app_router.on('route:userPage', function (id) {
 
             var menuView = new MenuView(userProfile);
 
-            var userView = new UserView(userProfile);
+            var userView = new UserView(userProfile, { 'id' : id});
         });
 
         app_router.on('route:searchPage', function () {
