@@ -94,7 +94,7 @@ define([
                 },
                 failure: function(data, status)
                 {
-                    alert("echec follow" + id );
+                    alert("follow " + id + " failed" );
                 },
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization',  getCookie());
@@ -386,7 +386,6 @@ define([
         },
 
         addMovieToWatchList : function(event) {
-            alert("ok");
             var currentElement = $(event.currentTarget).data('id');
 
             this.launchquery(ServerUrl + '/movies/' + currentElement,
@@ -399,7 +398,7 @@ define([
 
             var watchListId = undefined;
             var selectElement = document.getElementById("watchlistsNames").firstChild;
-            if (selectElement.selectedIndex !== undefined) {
+            if (selectElement.selectedIndex !== undefined && selectElement.selectedIndex !== -1) {
                 var selectedOption = selectElement.options[ selectElement.selectedIndex ];
                 watchListId = selectedOption.value;
             } else {

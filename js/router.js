@@ -7,11 +7,14 @@ define([
     'views/searchView',
     'views/actorViews/actorMain',
     'views/movieViews/movieMain',
-    'views/serieViews/serieMain'
-], function($, _, Backbone, MenuView, WatchlistView, SearchView, ActorMainView, MovieView, SerieView){
+    'views/serieViews/serieMain',
+    'views/userView'
+], function($, _, Backbone, MenuView, WatchlistView, SearchView, ActorMainView, MovieView, SerieView, UserView){
     var AppRouter = Backbone.Router.extend({
         routes: {
             // Default
+            'user': 'userPage',
+            'user/': 'userPage',
             'search/': 'searchPage',
             'search': 'searchPage',
             'actor/' : 'searchActor',
@@ -37,6 +40,13 @@ define([
             var menuView = new MenuView(userProfile);
 
             var watchlistView = new WatchlistView(userProfile);
+        });
+
+        app_router.on('route:userPage', function () {
+
+            var menuView = new MenuView(userProfile);
+
+            var userView = new UserView(userProfile);
         });
 
         app_router.on('route:searchPage', function () {
