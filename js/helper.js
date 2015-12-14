@@ -13,6 +13,10 @@ var getCookie = function() {
     return "";
 };
 
+var clearCookie = function(){
+    document.cookie = "";
+};
+
 var contains_movie_in_watchlist = function(list, movie){
     var result = false;
     for (var i = 0; i < list.movies.length; i++) {

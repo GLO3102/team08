@@ -26,7 +26,7 @@ define([
         },
         LogOut: function (event) {
             var selectMenu = $(event.currentTarget).data('toggle');
-            console.log(selectMenu);
+            clearCookie();
             if(selectMenu =="Log Out"){
                 window.location.href = './Login.html';
             }

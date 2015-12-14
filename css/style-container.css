@@ -124,6 +124,10 @@
     text-align: justify;
 }
 
+.open i{
+    width: 100% !important;
+}
+
 @media all and (max-width:1200px) {
     .preview-panel{
         clear:left;
