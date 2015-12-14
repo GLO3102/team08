@@ -21,6 +21,7 @@ define([
 
         events: {
             'click #menuSearchButton' : 'searchPageRedirect',
+            'click #profileButton' : 'user_profile',
             'click .fa-power-off ' : 'LogOut'
 
         },
@@ -42,6 +43,20 @@ define([
             }
 
             window.location.href = newUrl;
+        },
+        user_profile : function() {
+            $.ajax({
+                url:  urlServer + '/tokenInfo',
+                type: 'GET',
+                contentType: "application/JSON; charset=utf-8",
+                success:function(data){
+                    var newUrl = "./index.html#user/"+data.id;
+                    window.location.href = newUrl;
+                },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', getCookie());
+                }
+            });
         },
 
         initAutocomplete : function() {
