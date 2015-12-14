@@ -10,8 +10,9 @@
                     <input class="<%= movie.movies[0].trackId %> " id = "<%= movie.movies[0] %>" value="<%= movie.movies[0].trackName %>" placeholder="Name" hidden><button class="add-watchlist-button"
                                      data-id="<%= movie.movies[0].trackName %>">+Add watchlist </button>
                     <select id="watchListIds" class = 'selectAddMovietoList'>
-                                <%for(var i = 0; i != watchlist.responseJSON.length; i++) { %>
-                                <option value="<%= watchlist.responseJSON[i].id %>"> <%= watchlist.responseJSON[i].name %> </option>
+                                <% console.log(watchlist); %>
+                                <%for(var i = 0; i != watchlist.length; i++) { %>
+                                <option value="<%= watchlist[i].id %>"> <%= watchlist[i].name %> </option>
                                 <% ; }; %>
                     </select>
                     <div id = "message"></div>
@@ -52,7 +53,7 @@
         <div class="col-lg-4">
             <div class="panel panel-default">
                 <img class="showTVCover"
-                     src="<%= movie.artworkUrl400 %>"/>
+                     src="<%= movie.movies[0].artworkUrl400 %>"/>
             </div>
         </div>
         <div class="col-lg-4">

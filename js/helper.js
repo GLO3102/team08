@@ -12,3 +12,47 @@ var getCookie = function() {
     }
     return "";
 };
+
+var contains_movie_in_watchlist = function(list, movie){
+    var result = false;
+    for (var i = 0; i < list.movies.length; i++) {
+        if (list.movies[i].trackId == movie.trackId)
+            result = true;
+    }
+
+    console.log("contains_movie_in_watchlist ",result);
+    return result;
+};
+
+var  getWachtListCurrentUser = function(){
+
+    var array = [];
+    $.ajax({
+        url:  urlServer + '/tokenInfo',
+        type: 'GET',
+        contentType: "application/JSON; charset=utf-8",
+        success:function(data){
+            $.ajax({
+                url: urlServer + '/watchlists',
+                type: 'GET',
+                contentType: "application/JSON; charset=utf-8",
+                success:function(list){
+                    for(var i = 0;i<list.length;i++){
+                        if(list[i].owner !== undefined) {
+                            if (list[i].owner.id == data.id)
+                                array.push(list[i]);
+                        }
+                    }
+                },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', getCookie());
+                }
+            })
+        },
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization', getCookie());
+        }
+    });
+
+    return array;
+};

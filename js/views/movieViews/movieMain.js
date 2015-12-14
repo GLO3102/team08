@@ -17,16 +17,7 @@ define([
             'click .add-watchlist-button': 'addMovieToWatchList'
         },
         el: $('#Page_Container'),
-
-        list :$.ajax({
-                url:  urlServer + '/watchlists',
-                type: 'GET',
-                contentType: "application/JSON; charset=utf-8",
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader('Authorization', getCookie());
-                }
-            }),
-
+        list :getWachtListCurrentUser(),
         initialize: function() {
             this.model = new MovieMainModel();
         },
@@ -42,7 +33,8 @@ define([
 
         compileTemplate:function(self){
             var compiledTemplate = _.template(MovieTemplate);
-
+            console.log(self.list);
+            console.log(self.model);
             self.$el.html( compiledTemplate({movie:self.model, watchlist: self.list}) );
         },
 
@@ -57,21 +49,35 @@ define([
                 watchListId = selectedOption.value;
             }
 
-            console.log(movie);
+            console.log("Id watchlist ",watchListId);
             if (watchListId !== undefined) {
                 $.ajax({
-                    type: "POST",
-                    url: urlServer + '/watchlists/' + watchListId + '/movies',
-                    data: movie,
-                    success: function () {
-                        $('#message').html(currentElement + ' was added to watchlist');
+                    type: "GET",
+                    url: urlServer + '/watchlists/' + watchListId,
+                    success: function (list) {
+                        console.log("list ",list);
+                        if(!contains_movie_in_watchlist(list,movie)){
+                            $.ajax({
+                                type: "POST",
+                                url: urlServer + '/watchlists/' + watchListId + '/movies',
+                                data: movie,
+                                success: function () {
+                                    $('#message').html(currentElement + ' was added to watchlist');
+                                },
+                                beforeSend: function(xhr) {
+                                    xhr.setRequestHeader('Authorization', getCookie());
+                                }
+                            });
+                        }
+                        else
+                            $('#message').html(currentElement + ' is already in the list.');
                     },
                     beforeSend: function(xhr) {
                         xhr.setRequestHeader('Authorization', getCookie());
                     }
                 });
             }
-        },
+        }
     });
 
 

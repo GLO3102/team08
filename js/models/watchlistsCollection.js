@@ -20,7 +20,7 @@ define([
             return $.ajax(params);
         },
         parse:function(response){
-            return response.results;
+            return response;
         }
     });
 

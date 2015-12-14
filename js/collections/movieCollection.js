@@ -27,9 +27,19 @@ define([
             return $.ajax(params);
         },
         parse:function(response){
-            return response.results;
-
-
+            var collection = response.results;
+            console.log("Movie",collection);
+            var serieName = collection[0].artistName;
+            var newCollection = [];
+            _.each(collection,function(item){
+                if(item.artistName == serieName)
+                {
+                    var img_url = item.artworkUrl100;
+                    item.artworkUrl400 = img_url.replace('100x100bb','400x400bb');
+                    newCollection.push(item);
+                }
+            });
+            return _.sortBy(newCollection,'collectionId');
         }
     });
 
